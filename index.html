@@ -25,7 +25,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{--bg:#FFFFFF;--white:#FFFFFF;--black:#0F0F0F;--g1:#EBEBED;--g2:#D8D8DC;--g3:#AEAEB8;--g4:#6C6C76;--r:20px;--sh:0 2px 12px rgba(0,0,0,0.06);}
-body{font-family:'Garet',sans-serif;background:var(--bg);color:var(--black);min-height:100vh;}
+body{font-family:'Garet',sans-serif;font-weight:400;background:var(--bg);color:var(--black);min-height:100vh;}
 
 /* HEADER */
 header{background:var(--white);border-bottom:1px solid var(--g2);padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
@@ -51,10 +51,10 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .hc-ico{width:44px;height:44px;border-radius:12px;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:1rem;}
 .hc.dark .hc-ico{background:rgba(255,255,255,0.08);}
 .hc h2{font-size:22px;font-family:'ClassyVogue',sans-serif;letter-spacing:0.02em;margin-bottom:5px;}
-.hc p{font-size:13px;color:var(--g4);line-height:1.6;font-weight:400;}
+.hc p{font-size:13px;font-family:'Garet',sans-serif;color:var(--g4);line-height:1.6;font-weight:400;}
 .hc.dark p{color:rgba(255,255,255,0.45);}
 .hc-pills{display:flex;gap:6px;margin-top:1rem;flex-wrap:wrap;}
-.pill{font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:20px;background:var(--g1);color:var(--g4);}
+.pill{font-size:11px;font-family:'Garet',sans-serif;font-weight:400;letter-spacing:.04em;padding:3px 9px;border-radius:20px;background:var(--g1);color:var(--g4);}
 .hc.dark .pill{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);}
 .hc-arr{position:absolute;bottom:1.5rem;right:1.5rem;width:34px;height:34px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;}
 .hc.dark .hc-arr{background:rgba(255,255,255,0.12);}
@@ -72,8 +72,8 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .tbtn.sel{opacity:0.6;transform:scale(0.97);}
 .t-ico{font-size:22px;margin-bottom:8px;}
 .t-nm{font-size:14px;font-family:'ClassyVogue',sans-serif;line-height:1.3;}
-.t-ct{font-size:11px;color:var(--g3);margin-top:3px;font-weight:500;}
-.tbtn.sel .t-ct{color:rgba(255,255,255,0.45);}.tbtn.style-filled .t-ct{color:rgba(255,255,255,0.55);}
+.t-ct{font-family:'Garet',sans-serif;font-size:11px;color:var(--g3);margin-top:3px;font-weight:500;}
+.tbtn.sel .t-ct{font-family:'Garet',sans-serif;color:rgba(255,255,255,0.45);}.tbtn.style-filled .t-ct{font-family:'Garet',sans-serif;color:rgba(255,255,255,0.55);}
 
 /* FLASHCARD */
 .fc{display:none;flex-direction:column;align-items:center;gap:18px;}
@@ -81,17 +81,17 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .fc-bar{width:100%;max-width:500px;}
 .fc-track{height:4px;background:var(--g2);border-radius:2px;overflow:hidden;}
 .fc-fill{height:100%;background:var(--black);border-radius:2px;transition:width .4s;}
-.fc-lbl{font-size:11px;font-weight:700;color:var(--g3);letter-spacing:.06em;text-align:center;margin-top:6px;}
+.fc-lbl{font-family:'Garet',sans-serif;font-size:11px;font-weight:700;color:var(--g3);letter-spacing:.06em;text-align:center;margin-top:6px;}
 .cs{width:100%;max-width:500px;height:270px;perspective:1200px;cursor:pointer;}
 .ci{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);}
 .ci.flip{transform:rotateY(180deg);}
 .cf{position:absolute;width:100%;height:100%;backface-visibility:hidden;background:var(--white);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;border:2px solid var(--black);box-shadow:none;}
 .cf.back{transform:rotateY(180deg);background:var(--black);color:#fff;}
-.cl{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);margin-bottom:12px;}
-.cf.back .cl{color:rgba(255,255,255,0.35);}
+.cl{font-family:'Garet',sans-serif;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);margin-bottom:12px;}
+.cf.back .cl{font-family:'Garet',sans-serif;color:rgba(255,255,255,0.35);}
 .cw{font-size:38px;font-family:'ClassyVogue',sans-serif;letter-spacing:0.02em;text-align:center;}
-.cx{font-size:13px;color:rgba(255,255,255,0.5);margin-top:12px;text-align:center;font-style:italic;line-height:1.5;}
-.fhint{font-size:11px;font-weight:600;color:var(--g3);letter-spacing:.04em;}
+.cx{font-family:'Garet',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);margin-top:12px;text-align:center;font-style:italic;line-height:1.5;}
+.fhint{font-family:'Garet',sans-serif;font-size:11px;font-weight:600;color:var(--g3);letter-spacing:.04em;}
 .cbtns{display:flex;gap:0;opacity:0;transition:opacity .25s;pointer-events:none;background:var(--white);border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);width:100%;max-width:500px;}
 .cbtns.on{opacity:1;pointer-events:all;}
 .cbtn{flex:1;padding:18px 0;border:none;border-radius:0;font-family:'Garet',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center;gap:10px;letter-spacing:0.01em;}
@@ -104,7 +104,7 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .score{display:none;flex-direction:column;align-items:center;gap:1.25rem;padding:3rem 0;text-align:center;}
 .score.on{display:flex;}
 .s-big{font-size:72px;font-family:'ClassyVogue',sans-serif;letter-spacing:0.02em;line-height:1;color:rgb(0,0,255);}
-.s-sub{font-size:14px;color:var(--g4);font-weight:500;}
+.s-sub{font-family:'Garet',sans-serif;font-size:14px;color:var(--g4);font-weight:500;}
 .s-row{display:flex;gap:30px;}
 .s-stat{display:flex;flex-direction:column;align-items:center;}
 .s-stat strong{font-size:24px;font-weight:800;letter-spacing:-0.03em;}
@@ -124,51 +124,51 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .vctrls input:focus,.vctrls select:focus{border-color:var(--black);}
 .vctrls input{flex:1;min-width:160px;}
 .vtab{background:var(--white);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:1.25rem;}
-.vth{display:grid;grid-template-columns:165px 1fr 105px 50px;background:var(--black);color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:11px 18px;gap:12px;}
-.vtr{display:grid;grid-template-columns:165px 1fr 105px 50px;padding:13px 18px;gap:12px;border-top:1px solid var(--g1);align-items:center;cursor:pointer;transition:background .12s;}
+.vth{font-family:'Garet',sans-serif;display:grid;grid-template-columns:40px auto 1fr;background:var(--black);color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:11px 18px;gap:12px;}
+.vtr{display:grid;grid-template-columns:40px auto 1fr;padding:13px 18px;gap:12px;border-top:1px solid var(--g1);align-items:center;cursor:pointer;transition:background .12s;}
 .vtr:hover{background:var(--g1);}
-.vi{font-size:15px;font-weight:800;letter-spacing:-0.02em;}
-.vd{font-size:12px;color:var(--g4);}
-.badge{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:800;display:inline-block;letter-spacing:.03em;}
+.vi{font-family:'Garet',sans-serif;font-size:15px;font-weight:800;letter-spacing:-0.02em;}
+.vd{font-family:'Garet',sans-serif;font-size:12px;color:var(--g4);}
+.badge{font-family:'Garet',sans-serif;font-size:10px;padding:3px 8px;border-radius:20px;font-weight:800;display:inline-block;letter-spacing:.03em;}
 .ba{background:#E6F5EC;color:#1A6B38;}
 .be{background:#E6EDF9;color:#1A45A0;}
 .bi{background:#FFF3E6;color:#A05010;}
 .brr{background:#F5E6E6;color:#9A1A1A;}
-.varr{font-size:13px;color:var(--g3);text-align:right;}
-.vtr:hover .varr{color:var(--black);}
+.varr{font-family:'Garet',sans-serif;font-size:13px;color:var(--g3);text-align:right;}
+.vtr:hover .varr{font-family:'Garet',sans-serif;color:var(--black);}
 
 /* CONJ PANEL */
 .cpanel{display:none;background:var(--white);border-radius:var(--r);box-shadow:var(--sh);padding:1.75rem;margin-bottom:1.25rem;}
 .cpanel.on{display:block;}
 .cp-top{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;}
 .cp-v{font-size:30px;font-family:'ClassyVogue',sans-serif;letter-spacing:0.02em;}
-.cp-d{font-size:13px;color:var(--g4);}
+.cp-d{font-family:'Garet',sans-serif;font-size:13px;color:var(--g4);}
 .trow{display:flex;gap:5px;margin:1rem 0;flex-wrap:wrap;}
 .tt{background:var(--g1);border:none;border-radius:9px;padding:6px 14px;font-family:'Garet',sans-serif;font-size:12px;font-weight:700;color:var(--g4);cursor:pointer;transition:all .15s;}
 .tt:hover{color:var(--black);}
 .tt.on{background:var(--black);color:#fff;}
 .cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;}
 .citem{display:flex;align-items:baseline;gap:10px;background:var(--g1);border-radius:11px;padding:9px 13px;}
-.cpro{font-size:11px;color:var(--g3);font-weight:700;min-width:54px;letter-spacing:.02em;}
-.cform{font-size:16px;font-weight:800;letter-spacing:-0.02em;}
+.cpro{font-family:'Garet',sans-serif;font-size:11px;color:var(--g3);font-weight:700;min-width:54px;letter-spacing:.02em;}
+.cform{font-family:'Garet',sans-serif;font-size:16px;font-weight:800;letter-spacing:-0.02em;}
 
 /* QUIZ */
 .qcard{background:var(--white);border-radius:var(--r);box-shadow:var(--sh);padding:2.25rem;}
 .qcard h3{font-size:11px;font-family:'Garet',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g3);margin-bottom:1.5rem;}
 .qverb{font-size:34px;font-family:'ClassyVogue',sans-serif;letter-spacing:0.02em;margin-bottom:5px;}
-.qinfo{font-size:13px;color:var(--g4);font-weight:600;margin-bottom:1.5rem;}
-.qrow{display:flex;gap:10px;margin-bottom:12px;}
+.qinfo{font-size:13px;font-family:'Garet',sans-serif;color:var(--g4);font-weight:400;margin-bottom:1.5rem;}
+.qrow{display:flex;flex-direction:column;gap:10px;margin-bottom:12px;}
 .qi{flex:1;background:var(--g1);border:2px solid transparent;border-radius:13px;padding:14px 16px;font-family:'Garet',sans-serif !important;font-size:18px;font-weight:700;color:var(--black);outline:none;transition:all .15s;letter-spacing:-0.02em;}
 .qi:focus{border-color:var(--black);background:var(--white);}.qi::placeholder{font-family:'Garet',sans-serif;font-weight:400;font-size:15px;}
 .qi.ok{border-color:#1A6B38;background:#E6F5EC;}
 .qi.err{border-color:#9A1A1A;background:#F5E6E6;}
-.btn-chk{background:var(--black);color:#fff;border:none;border-radius:13px;padding:0 22px;font-family:'Garet',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.btn-chk{background:var(--black);color:#fff;border:none;border-radius:13px;padding:14px;font-family:'Garet',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;width:100%;}
 .btn-chk:hover{background:#333;}
-.qfb{font-size:13px;font-weight:700;padding:11px 14px;border-radius:11px;display:none;margin-bottom:12px;}
+.qfb{font-size:13px;font-family:'Garet',sans-serif;font-weight:400;padding:11px 14px;border-radius:11px;display:none;margin-bottom:12px;}
 .qfb.on{display:block;}
 .qfb.ok{background:#E6F5EC;color:#1A6B38;}
 .qfb.err{background:#F5E6E6;color:#9A1A1A;}
-.btn-next{background:none;border:2px solid var(--g2);border-radius:11px;padding:10px 18px;font-family:'Garet',sans-serif;font-size:12px;font-weight:700;cursor:pointer;color:var(--g4);display:none;transition:all .15s;}
+.btn-next{background:none;border:2px solid var(--g2);border-radius:11px;padding:10px 18px;font-family:'Garet',sans-serif;font-size:12px;font-weight:400;cursor:pointer;color:var(--g4);display:none;transition:all .15s;}
 .btn-next:hover{border-color:var(--black);color:var(--black);}
 .btn-next.on{display:inline-block;}
 
@@ -206,6 +206,15 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .tbtn.style-filled .t-score-badge{
   background:white;color:rgb(0,0,255);border-color:rgb(0,0,255);
 }
+
+.vtr-check{display:flex;align-items:center;justify-content:center;}
+.vchk{width:20px;height:20px;border-radius:6px;border:2px solid var(--g2);appearance:none;-webkit-appearance:none;cursor:pointer;transition:all .15s;flex-shrink:0;background:var(--white);}
+.vchk:checked{background:var(--black);border-color:var(--black);}
+.vchk:checked::after{content:'✓';color:white;font-size:13px;display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
+.vsel-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-family:'Garet',sans-serif;font-size:13px;color:var(--g4);}
+.vsel-bar button{background:none;border:1px solid var(--g2);border-radius:8px;padding:5px 12px;font-family:'Garet',sans-serif;font-size:12px;cursor:pointer;transition:all .15s;color:var(--g4);}
+.vsel-bar button:hover{border-color:var(--black);color:var(--black);}
+.vth>:nth-child(4),.vtr>:nth-child(4){display:none;}
 </style>
 </head>
 <body>
@@ -214,8 +223,8 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
   <div class="logo">eccoci qua!</div>
   <nav>
     <button class="active" onclick="go('home')">Start</button>
-    <button onclick="go('vocab')">Vocabolario</button>
-    <button onclick="go('verbs')">Trainer Verbi</button>
+    <button onclick="go('vocab')">Voca</button>
+    <button onclick="go('verbs')">Verbi</button>
   </nav>
 </header>
 
@@ -228,15 +237,15 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
     <div class="hc" onclick="go('vocab')">
       
       <h2>Vocabolario</h2>
-      <p>Lerne Wörter nach Themen mit Flashcards — umdrehen, einschätzen, weitermachen.</p>
+      <p>Lerne Wörter nach Themen mit Flashcards.</p>
       <div class="hc-pills"><span class="pill">23 Themen</span><span class="pill">700+ Wörter</span><span class="pill">Flashcards</span></div>
       <div class="hc-arr">→</div>
     </div>
     <div class="hc dark" onclick="go('verbs')">
       
       <h2>Trainer Verbi</h2>
-      <p>Die 50 wichtigsten Trainer Verbi — Konjugationstabellen und interaktiver Quiz-Modus.</p>
-      <div class="hc-pills"><span class="pill">50 Trainer Verbi</span><span class="pill">4 Zeiten</span><span class="pill">Quiz</span></div>
+      <p>Lerne die 50 wichtigsten Verben konjugieren in presente, imperfetto, passato prossimo und futuro semplice.</p>
+      <div class="hc-pills"><span class="pill">50 Verben</span><span class="pill">4 Zeiten</span><span class="pill">Quiz</span></div>
       <div class="hc-arr">→</div>
     </div>
   </div>
@@ -286,7 +295,8 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
       <div class="s-stat"><strong id="sno">0</strong><span>Falsch</span></div>
       <div class="s-stat"><strong id="stot">0</strong><span>Gesamt</span></div>
     </div>
-    <button class="btn-prim" onclick="rVocab()">Nochmals üben</button>
+    <button id="repeatWrongBtn" class="btn-prim" onclick="repeatWrong()" style="display:none;background:rgb(0,0,255);">✗ &nbsp;Nur Falsche wiederholen</button>
+    <button class="btn-prim" onclick="rVocab()">Alle wiederholen</button>
     <button class="btn-back" onclick="bkTop()" style="margin-top:-2px;">Thema wechseln</button>
   </div>
 </div>
@@ -312,8 +322,15 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
         <option value="irr">Unregelmässig</option>
       </select>
     </div>
+    <div class="vsel-bar">
+      <span id="vselCount">Alle 50 ausgewählt</span>
+      <div style="display:flex;gap:6px;">
+        <button onclick="selectAllVerbs()">Alle</button>
+        <button onclick="selectNoneVerbs()">Keine</button>
+      </div>
+    </div>
     <div class="vtab">
-      <div class="vth"><span>Italiano</span><span>Deutsch</span><span>Typ</span><span></span></div>
+      <div class="vth"><span style="width:30px"></span><span>Italiano</span><span>Deutsch</span><span>Typ</span></div>
       <div id="vtb"></div>
     </div>
     <div class="cpanel" id="cp">
@@ -1059,10 +1076,11 @@ const V=[
   {it:'aprire',de:'öffnen',type:'ire',c:{presente:['apro','apri','apre','apriamo','aprite','aprono'],imperfetto:['aprivo','aprivi','apriva','aprivamo','aprivate','aprivano'],futuro:['aprirò','aprirai','aprirà','apriremo','aprirete','apriranno'],passato:['ho aperto','hai aperto','ha aperto','abbiamo aperto','avete aperto','hanno aperto']}},
 ];
 
+const selectedVerbs=new Set(V.map(v=>v.it));
 const PRN=['io','tu','lui/lei','noi','voi','loro'];
 const TNS={presente:'Presente',imperfetto:'Imperfetto',futuro:'Futuro',passato:'Passato prossimo'};
 
-let dk=[],di=0,dok=0,dno=0,flp=false,sTopic=null,aConj=null,aTense='presente',qV=null,qT='presente',qP=0;
+let dk=[],di=0,dok=0,dno=0,flp=false,sTopic=null,aConj=null,aTense='presente',qV=null,qT='presente',qP=0,wrongCards=[];
 
 function go(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
@@ -1083,7 +1101,7 @@ function go(id){
     d.onclick=()=>startT(t);g.appendChild(d);});
 })();
 
-function startT(t){sTopic=t;dk=[...t.words].sort(()=>Math.random()-.5);di=0;dok=0;dno=0;
+function startT(t){sTopic=t;dk=[...t.words].sort(()=>Math.random()-.5);di=0;dok=0;dno=0;wrongCards=[];
   document.getElementById('tsel').style.display='none';
   document.getElementById('scr').classList.remove('on');
   document.getElementById('fc').classList.add('on');showC();}
@@ -1103,8 +1121,7 @@ function showC(){
 }
 function flipC(){if(flp)return;flp=true;document.getElementById('ci').classList.add('flip');document.getElementById('cbtns').classList.add('on');document.getElementById('fhint').style.opacity='0';}
 function mk(ok){
-  if(ok)dok++;else dno++;di++;
-  // First flip card back to front, then load new word after animation completes
+  if(ok)dok++;else{dno++;wrongCards.push(dk[di]);}di++;
   const ci=document.getElementById('ci');
   ci.classList.remove('flip');
   document.getElementById('cbtns').classList.remove('on');
@@ -1119,6 +1136,9 @@ function endD(){document.getElementById('fc').classList.remove('on');
   document.getElementById('sno').textContent=dno;
   document.getElementById('stot').textContent=dk.length;
   document.getElementById('scr').classList.add('on');
+  // Show/hide repeat-wrong button
+  const repeatWrongBtn=document.getElementById('repeatWrongBtn');
+  if(repeatWrongBtn) repeatWrongBtn.style.display=wrongCards.length>0?'inline-block':'none';
   // Save score and update badge
   if(sTopic){
     topicScores[sTopic.id]=p;
@@ -1131,6 +1151,14 @@ function endD(){document.getElementById('fc').classList.remove('on');
   }
 }
 function rVocab(){if(sTopic)startT(sTopic);}
+function repeatWrong(){
+  if(wrongCards.length===0)return;
+  dk=[...wrongCards].sort(()=>Math.random()-.5);
+  di=0;dok=0;dno=0;wrongCards=[];
+  document.getElementById('scr').classList.remove('on');
+  document.getElementById('fc').classList.add('on');
+  showC();
+}
 function bkTop(){document.getElementById('scr').classList.remove('on');document.getElementById('fc').classList.remove('on');document.getElementById('tsel').style.display='';}
 
 // VERB TABLE
@@ -1142,8 +1170,34 @@ function rv(){
   const bl={are:'-are',ere:'-ere',ire:'-ire',irr:'unregelm.'};
   V.filter(v=>(v.it.includes(s)||v.de.toLowerCase().includes(s))&&(!t||v.type===t)).forEach(v=>{
     const r=document.createElement('div');r.className='vtr';
-    r.innerHTML=`<span class="vi">${v.it}</span><span class="vd">${v.de}</span><span><span class="badge ${bm[v.type]}">${bl[v.type]}</span></span><span class="varr">→</span>`;
-    r.onclick=()=>showCj(v);b.appendChild(r);});
+    const checked=selectedVerbs.has(v.it)?'checked':'';
+    r.innerHTML=`<span class="vtr-check"><input type="checkbox" class="vchk" ${checked} onclick="toggleVerb(event,'${v.it}')"></span><span class="vi">${v.it}</span><span class="vd">${v.de}</span><span><span class="badge ${bm[v.type]}">${bl[v.type]}</span></span>`;
+    r.onclick=(e)=>{if(e.target.type!=='checkbox')showCj(v);};
+    b.appendChild(r);
+  });
+  updateVselCount();
+}
+
+function toggleVerb(e,it){
+  e.stopPropagation();
+  if(e.target.checked)selectedVerbs.add(it);
+  else selectedVerbs.delete(it);
+  updateVselCount();
+}
+
+function selectAllVerbs(){
+  V.forEach(v=>selectedVerbs.add(v.it));
+  rv();
+}
+
+function selectNoneVerbs(){
+  selectedVerbs.clear();
+  rv();
+}
+
+function updateVselCount(){
+  const el=document.getElementById('vselCount');
+  if(el)el.textContent=selectedVerbs.size+' von '+V.length+' ausgewählt';
 }
 function showCj(v){aConj=v;aTense='presente';
   document.getElementById('cpv').textContent=v.it;
@@ -1168,7 +1222,9 @@ function vp(p){
 
 // QUIZ
 function nxtQ(){
-  qV=V[Math.floor(Math.random()*V.length)];
+  const pool=V.filter(v=>selectedVerbs.has(v.it));
+  if(pool.length===0){document.getElementById('qv').textContent='Keine Verben ausgewählt';document.getElementById('qi2').textContent='';return;}
+  qV=pool[Math.floor(Math.random()*pool.length)];
   const tk=Object.keys(TNS);qT=tk[Math.floor(Math.random()*tk.length)];qP=Math.floor(Math.random()*6);
   document.getElementById('qv').textContent=qV.it+' — '+qV.de;
   document.getElementById('qi2').textContent=TNS[qT]+' · '+PRN[qP];
