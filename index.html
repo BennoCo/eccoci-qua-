@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
 <title>/italiano:</title>
 <style>
 @font-face {
@@ -215,6 +215,14 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .vsel-bar button{background:none;border:1px solid var(--g2);border-radius:8px;padding:5px 12px;font-family:'Garet',sans-serif;font-size:12px;cursor:pointer;transition:all .15s;color:var(--g4);}
 .vsel-bar button:hover{border-color:var(--black);color:var(--black);}
 .vth>:nth-child(4),.vtr>:nth-child(4){display:none;}
+
+@media(max-width:600px){
+  .qverb{font-size:22px;}
+  .qinfo{font-size:12px;margin-bottom:0.75rem;}
+  .qcard{padding:1.25rem;}
+  .qi{font-size:16px;padding:11px 14px;}
+  .btn-chk{padding:12px;}
+}
 </style>
 </head>
 <body>
@@ -1016,11 +1024,6 @@ const T=[
     {de:'anhalten',it:'fermarsi',ex:"Il treno si ferma a Milano."},
     {de:'sich betrinken',it:'ubriacarsi',ex:"Non mi ubriaco mai."},
   ]},
-  {id:'test',icon:'🧪',name:'Test',words:[
-    {de:'heißen',it:'chiamarsi',ex:"Mi chiamo Marco."},
-    {de:'sich entspannen',it:'rilassarsi',ex:"Mi rilasso ascoltando musica."},
-    {de:'sich ausruhen',it:'riposarsi',ex:"Mi riposo un po' dopo il lavoro."},
-  ]},
 ];
 
 const V=[
@@ -1241,6 +1244,17 @@ function chk(){
   else{i.className='qi err';fb.textContent='✗ Richtig: '+qV.c[qT][qP];fb.className='qfb on err';}
   i.disabled=true;document.getElementById('qnxt').className='btn-next on';
 }
+
+document.addEventListener('DOMContentLoaded',function(){
+  const qin = document.getElementById('qin');
+  if(qin){
+    qin.addEventListener('focus', function(){
+      setTimeout(function(){
+        document.querySelector('.qcard').scrollIntoView({behavior:'smooth', block:'start'});
+      }, 300);
+    });
+  }
+});
 </script>
 </body>
 </html>
