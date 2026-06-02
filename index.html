@@ -240,6 +240,19 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .streak-circle.bump{transform:scale(1.3);}
 .streak-label{font-family:'Garet',sans-serif;font-size:11px;color:var(--g3);margin-left:8px;letter-spacing:.06em;text-transform:uppercase;}
 
+
+.prep-sentence{font-family:'Garet',sans-serif;font-size:16px;line-height:2.4;margin-bottom:1.5rem;}
+.prep-inline{
+  border:none;border-bottom:2px solid var(--black);
+  background:transparent;
+  font-family:'Garet',sans-serif;font-size:16px;
+  width:80px;text-align:center;
+  padding:0 4px;margin:0 3px;
+  outline:none;color:var(--black);
+}
+.prep-inline.ok{border-bottom-color:#1A6B38;color:#1A6B38;}
+.prep-inline.err{border-bottom-color:#9A1A1A;color:#9A1A1A;}
+
 </style>
 </head>
 <body>
@@ -248,8 +261,7 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
   <div class="logo">eccoci qua!</div>
   <nav>
     <button class="active" onclick="go('home')">Start</button>
-    <button onclick="go('vocab')">Voca</button>
-    <button onclick="go('verbs')">Verbi</button>
+
   </nav>
 </header>
 
@@ -270,7 +282,13 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
       
       <h2>Trainer Verbi</h2>
       <p>Lerne die 50 wichtigsten Verben konjugieren in presente, imperfetto, passato prossimo und futuro semplice.</p>
-      <div class="hc-pills"><span class="pill">50 Verben</span><span class="pill">4 Zeiten</span><span class="pill">Quiz</span></div>
+      <div class="hc-pills"><span class="pill">50 Verben</span><span class="pill">4 Zeiten</span><span class="pill">Coniugare</span></div>
+      <div class="hc-arr">→</div>
+    </div>
+    <div class="hc" onclick="go('prep')" style="margin-top:14px;">
+      <h2>Preposizioni</h2>
+      <p>Lückentexte mit den Präpositioni articolate — tippe die richtige Präposition ein.</p>
+      <div class="hc-pills"><span class="pill">4 Übungen</span><span class="pill">Lückentexte</span></div>
       <div class="hc-arr">→</div>
     </div>
   </div>
@@ -333,8 +351,9 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
     <button class="btn-back" onclick="go('home')">← Zurück</button>
   </div>
   <div class="snav">
-    <button class="sn on" id="sn-q" onclick="vp('q')">Quiz</button>
-    <button class="sn" id="sn-l" onclick="vp('l')">Übersicht</button>
+    <button class="sn" id="sn-l" onclick="vp('l')">Sintesi</button>
+    <button class="sn" id="sn-q" onclick="vp('q')">Coniugare</button>
+    <button class="sn" id="sn-r" onclick="vp('r')">Esercizio Riflessivi</button>
   </div>
   <div id="vpl" style="display:none">
     <div class="vctrls">
@@ -381,11 +400,50 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
       <button class="btn-next" id="qnxt" onclick="nxtQ()">Nächste Frage →</button>
     </div>
   </div>
+
+  <!-- RIFLESSIVI -->
+  <div id="vpr" style="display:none">
+    <div class="snav" style="margin-bottom:1.5rem;">
+      <button class="sn on" id="rpsn-1" onclick="startRif(1)">Übung 1</button>
+      <button class="sn" id="rpsn-2" onclick="startRif(2)">Übung 2</button>
+    </div>
+    <div class="qcard" id="rifCard">
+      <div id="rifProg" style="font-family:'Garet',sans-serif;font-size:12px;color:var(--g3);margin-bottom:1rem;"></div>
+      <div id="rifSentence" style="font-family:'Garet',sans-serif;font-size:16px;line-height:2.4;margin-bottom:1.5rem;"></div>
+      <input id="rifInput" type="text" style="display:none">
+      <div class="qfb" id="rifFb"></div>
+      <button class="btn-next" id="rifNext" onclick="nextRif()">Nächster Satz →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PREPOSIZIONI -->
+<div id="s-prep" class="section">
+  <div class="sec-h">
+    <h2>Preposizioni</h2>
+    <button class="btn-back" onclick="go('home')">← Zurück</button>
+  </div>
+
+  <!-- Exercise selector -->
+  <div id="prep-select" class="snav" style="margin-bottom:2rem;">
+    <button class="sn on" id="psn-1" onclick="startPrep(1)">Übung 1</button>
+    <button class="sn" id="psn-2" onclick="startPrep(2)">Übung 2 ⚠</button>
+    <button class="sn" id="psn-3" onclick="startPrep(3)">Übung 3 ⚠</button>
+    <button class="sn" id="psn-4" onclick="startPrep(4)">Übung 4 ⚠</button>
+  </div>
+
+  <div class="qcard" id="prepCard">
+    <div class="prep-progress" id="prepProg" style="font-family:'Garet',sans-serif;font-size:12px;color:var(--g3);margin-bottom:1rem;"></div>
+    <div class="prep-sentence" id="prepSentence" style="font-family:'Garet',sans-serif;font-size:17px;line-height:2;margin-bottom:1.5rem;"></div>
+    <input class="qi" id="prepInput" type="text" style="display:none">
+    <div class="qfb" id="prepFb"></div>
+    <button class="btn-next" id="prepNext" onclick="nextPrep()">Nächster Satz →</button>
+  </div>
 </div>
 </main>
 
 <script>
-const topicScores={};
+const topicScores=JSON.parse(localStorage.getItem('topicScores')||'{}');
 const T=[
   {id:'weather',icon:'☀️',name:'Il tempo',words:[
     {de:'der Regen',it:'la pioggia',ex:"La pioggia cade forte oggi."},
@@ -619,27 +677,27 @@ const T=[
     {de:'Artischocke',it:'il carciofo',ex:"I carciofi alla romana sono un piatto tipico."},
   ]},
   {id:'emozioni',icon:'❤️',name:'Le emozioni',words:[
-    {de:"glücklich (la felicità)",it:'felice',ex:"Sono felice di vederti!"},
-    {de:"traurig (la tristezza)",it:'triste',ex:"Mi sento triste oggi."},
-    {de:"erschrocken (lo spavento)",it:'spaventato/a',ex:"Era spaventata dal temporale."},
-    {de:"verärgert / böse (la rabbia)",it:'arrabbiato/a',ex:"Sono arrabbiato con te!"},
-    {de:"begeistert (l'entusiasmo)",it:'entusiasta',ex:"Sono entusiasta del nuovo progetto."},
-    {de:"ruhig (la tranquillità)",it:'tranquillo/a',ex:"Rimani tranquillo, va tutto bene."},
-    {de:"gelangweilt (la noia)",it:'annoiato/a',ex:"Il bambino è annoiato a casa."},
-    {de:"müde (la stanchezza)",it:'stanco/a',ex:"Sono stanca dopo il lavoro."},
-    {de:"überrascht (la sorpresa)",it:'sorpreso/a',ex:"Era sorpreso dal regalo."},
-    {de:"verliebt (l'innamoramento)",it:'innamorato/a',ex:"È innamorato della sua collega."},
-    {de:"besorgt (la preoccupazione)",it:'preoccupato/a',ex:"Sono preoccupata per lui."},
-    {de:"verlegen (l'imbarazzo)",it:'imbarazzato/a',ex:"Era imbarazzato davanti a tutti."},
-    {de:"verängstigt (la paura)",it:'impaurito/a',ex:"Il cane è impaurito dai fuochi."},
-    {de:"entschlossen (la decisione)",it:'deciso/a',ex:"Sono decisa a cambiare lavoro."},
-    {de:"aufgeregt / gerührt (l'emozione)",it:'emozionato/a',ex:"Era emozionata alla cerimonia."},
-    {de:"aufgeregt / beunruhigt (l'agitazione)",it:'agitato/a',ex:"Prima dell'esame ero agitato."},
+    {de:"glücklich",it:'felice',ex:"Sono felice di vederti!"},
+    {de:"traurig",it:'triste',ex:"Mi sento triste oggi."},
+    {de:"erschrocken",it:'spaventato/a',ex:"Era spaventata dal temporale."},
+    {de:"verärgert / böse",it:'arrabbiato/a',ex:"Sono arrabbiato con te!"},
+    {de:"begeistert",it:'entusiasta',ex:"Sono entusiasta del nuovo progetto."},
+    {de:"ruhig",it:'tranquillo/a',ex:"Rimani tranquillo, va tutto bene."},
+    {de:"gelangweilt",it:'annoiato/a',ex:"Il bambino è annoiato a casa."},
+    {de:"müde",it:'stanco/a',ex:"Sono stanca dopo il lavoro."},
+    {de:"überrascht",it:'sorpreso/a',ex:"Era sorpreso dal regalo."},
+    {de:"verliebt",it:'innamorato/a',ex:"È innamorato della sua collega."},
+    {de:"besorgt",it:'preoccupato/a',ex:"Sono preoccupata per lui."},
+    {de:"verlegen",it:'imbarazzato/a',ex:"Era imbarazzato davanti a tutti."},
+    {de:"verängstigt",it:'impaurito/a',ex:"Il cane è impaurito dai fuochi."},
+    {de:"entschlossen",it:'deciso/a',ex:"Sono decisa a cambiare lavoro."},
+    {de:"aufgeregt / gerührt",it:'emozionato/a',ex:"Era emozionata alla cerimonia."},
+    {de:"aufgeregt / beunruhigt",it:'agitato/a',ex:"Prima dell'esame ero agitato."},
     {de:"nervös / unruhig (il nervosismo)",it:'nervoso/a',ex:"Sono nervosa prima del colloquio."},
-    {de:"froh / zufrieden (la contentezza)",it:'contento/a',ex:"Sono contento dei risultati."},
-    {de:"enttäuscht (la delusione)",it:'deluso/a',ex:"Era delusa dal suo comportamento."},
-    {de:"stolz (l'orgoglio)",it:'orgoglioso/a',ex:"Sono orgoglioso di mia figlia."},
-    {de:"zufrieden (la soddisfazione)",it:'soddisfatto/a',ex:"Sono soddisfatta del lavoro fatto."},
+    {de:"froh / zufrieden",it:'contento/a',ex:"Sono contento dei risultati."},
+    {de:"enttäuscht",it:'deluso/a',ex:"Era delusa dal suo comportamento."},
+    {de:"stolz",it:'orgoglioso/a',ex:"Sono orgoglioso di mia figlia."},
+    {de:"zufrieden",it:'soddisfatto/a',ex:"Sono soddisfatta del lavoro fatto."},
   ]},
   {id:'corpo',icon:'🧍',name:'Le parti del corpo',words:[
     {de:'Kopf / Köpfe',it:'la testa / le teste',ex:"Ho mal di testa stamattina."},
@@ -1044,6 +1102,41 @@ const T=[
     {de:'anhalten',it:'fermarsi',ex:"Il treno si ferma a Milano."},
     {de:'sich betrinken',it:'ubriacarsi',ex:"Non mi ubriaco mai."},
   ]},
+  {id:'natur',icon:'🏔️',name:'La natura',words:[
+    {de:'die Höhle',it:'la grotta',ex:"La grotta è buia e misteriosa."},
+    {de:'der Wasserfall',it:'la cascata',ex:"La cascata è bellissima in primavera."},
+    {de:'die Wüste',it:'il deserto',ex:"Il deserto del Sahara è enorme."},
+    {de:'der Gletscher',it:'il ghiacciaio',ex:"Il ghiacciaio si scioglie ogni anno."},
+    {de:'der Gipfel',it:'la vetta / la cima della montagna',ex:"Abbiamo raggiunto la vetta alle dieci."},
+    {de:'der Weg / Trail',it:'il sentiero',ex:"Il sentiero sale fino al rifugio."},
+    {de:'der Fluss',it:'il fiume',ex:"Il fiume scorre lentamente nella pianura."},
+    {de:'die Ebene',it:'la pianura',ex:"La pianura padana è molto fertile."},
+    {de:'der Dschungel',it:'la giungla',ex:"La giungla amazzonica è ricca di vita."},
+    {de:'die Klippe',it:'lo scoglio',ex:"Gli scogli sono scivolosi."},
+    {de:'die Landschaft',it:'il paesaggio',ex:"Il paesaggio toscano è stupendo."},
+    {de:'das Meer',it:'il mare',ex:"Il mare Mediterraneo è caldo d'estate."},
+    {de:'der Ozean',it:"l'oceano",ex:"L'oceano Atlantico è vastissimo."},
+    {de:'das Mittelmeer',it:'il Mediterraneo',ex:"Il Mediterraneo bagna molti paesi."},
+    {de:'das Feld',it:'il campo',ex:"Il campo di grano è dorato."},
+    {de:'die Bucht',it:'la baia',ex:"La baia è riparata dal vento."},
+    {de:'das Tal',it:'la valle',ex:"La valle è verde e silenziosa."},
+    {de:'der Fels',it:'la roccia',ex:"La roccia è dura e grigia."},
+    {de:'die Schlucht',it:'la gola',ex:"La gola del fiume è profonda."},
+    {de:'der Bergsee',it:'il lago alpino',ex:"Il lago alpino è di un blu intenso."},
+    {de:'der Spaziergang',it:'la passeggiata',ex:"Facciamo una passeggiata nel bosco."},
+    {de:'der Schnee',it:'la neve',ex:"La neve copre le montagne d'inverno."},
+    {de:'die Schneeschuhe',it:'la scarpa da neve',ex:"Le scarpe da neve sono indispensabili."},
+    {de:'die Wiese',it:'il prato',ex:"Il prato è pieno di fiori colorati."},
+    {de:'heimwärts',it:'verso casa',ex:"Torniamo verso casa al tramonto."},
+    {de:'früh am Morgen',it:'la mattina presto',ex:"La mattina presto l'aria è fresca."},
+    {de:'riesig',it:'gigantesco',ex:"L'albero è gigantesco."},
+    {de:'wild',it:'selvaggio',ex:"Il paesaggio selvaggio mi affascina."},
+    {de:'naturbelassen',it:'incontaminato',ex:"Questo bosco è ancora incontaminato."},
+    {de:'saftig',it:'succoso',ex:"Il prato è verde e succoso."},
+    {de:'unberührt',it:'intatto',ex:"La natura intatta è rara oggi."},
+    {de:'klar',it:'chiaro',ex:"L'acqua del lago è chiara e trasparente."},
+    {de:'sanft',it:'morbido',ex:"Le colline morbide della Toscana."},
+  ]},
 ];
 
 const V=[
@@ -1109,7 +1202,7 @@ function go(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
   document.getElementById('s-'+id).classList.add('visible');
   document.querySelectorAll('nav button').forEach((b,i)=>{b.classList.remove('active');if(['home','vocab','verbs'][i]===id)b.classList.add('active');});
-  if(id==='verbs')nxtQ();
+  if(id==='verbs')nxtQ();if(id==='prep')startPrep(1);
 }
 
 // TOPIC GRID
@@ -1165,6 +1258,7 @@ function endD(){document.getElementById('fc').classList.remove('on');
   // Save score and update badge
   if(sTopic){
     topicScores[sTopic.id]=p;
+    localStorage.setItem('topicScores', JSON.stringify(topicScores));
     const btn=document.getElementById('tbtn-'+sTopic.id);
     if(btn){
       let badge=btn.querySelector('.t-score-badge');
@@ -1235,12 +1329,21 @@ function rGrid(){const g=document.getElementById('cg');g.innerHTML='';
 
 // SUB-NAV
 function vp(p){
-  document.getElementById('vpl').style.display=p==='l'?'':'none';
-  document.getElementById('vpq').style.display=p==='q'?'':'none';
-  document.getElementById('sn-l').classList.toggle('on',p==='l');
-  document.getElementById('sn-q').classList.toggle('on',p==='q');
+  const vpl=document.getElementById('vpl');
+  const vpq=document.getElementById('vpq');
+  const vpr=document.getElementById('vpr');
+  if(vpl)vpl.style.display=p==='l'?'':'none';
+  if(vpq)vpq.style.display=p==='q'?'':'none';
+  if(vpr)vpr.style.display=p==='r'?'':'none';
+  const snl=document.getElementById('sn-l');
+  const snq=document.getElementById('sn-q');
+  const snr=document.getElementById('sn-r');
+  if(snl)snl.classList.toggle('on',p==='l');
+  if(snq)snq.classList.toggle('on',p==='q');
+  if(snr)snr.classList.toggle('on',p==='r');
   if(p==='q')nxtQ();
   if(p==='l')rv();
+  if(p==='r')startRif(1);
 }
 
 // QUIZ
@@ -1285,6 +1388,268 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   }
 });
+
+// ======================== PREPOSIZIONI ========================
+const PREP_EXERCISES = {
+  1: [
+    {s:"Andiamo ___ cinema ___ i nostri amici inglesi.", ans:["al","con"]},
+    {s:"Dove abita Paola? Lei abita ___ via Coletti ___ numero 440.", ans:["in","a"]},
+    {s:"___ tavolo ___ cucina ci sono molti piatti decorati.", ans:["Sul","in"]},
+    {s:"I libri ___ miei fratelli sono molto interessanti ma pieni ___ difficoltà ___ me.", ans:["dei","di","per"]},
+    {s:"Quanti studenti vengono ___ gita ___ San Marino?", ans:["in","a"]},
+    {s:"La camera ___ primo piano è la più luminosa.", ans:["al"]},
+    {s:"Spedisco una cartolina ___ miei zii ___ Bari.", ans:["ai","a"]},
+    {s:"Rimaniamo ___ Roma ancora ___ due settimane.", ans:["a","per"]},
+    {s:"___ museo ci sono dipinti ___ Raffaello e ___ Giotto.", ans:["Al","di","di"]},
+    {s:"Arrivo ___ te ___ treno ___ 17.56.", ans:["da","in","alle"]},
+    {s:"Dopo la maturità molti giovani decidono ___ andare ___ università.", ans:["di","all'"]},
+    {s:"Vado spesso ___ parrucchiere perché i miei capelli sono troppo ricci.", ans:["dal"]},
+    {s:"Mando questo libro ___ avventure ___ mio amico che abita ___ un'isola ___ Eolie.", ans:["di","al","in","delle"]},
+    {s:"È vietato fumare ___ autobus.", ans:["nell'"]},
+    {s:"Questa sera vado ___ cena ___ fratello ___ Maria.", ans:["a","dal","di"]},
+    {s:"Io tengo il mio denaro ___ banca, dunque pago sempre ___ la carta ___ credito.", ans:["alla","con","di"]},
+    {s:"Portate una scatola ___ cioccolatini ___ vostra amica ___ ospedale.", ans:["di","alla","in"]},
+    {s:"Questa sera guardo un film ___ televisione o ascolto la musica ___ radio.", ans:["alla","alla"]},
+  ],
+  2: [
+    {s:"L'ombrello ___ tavolo è ___ insegnante ___ chimica.", ans:["sul","dell'","di"]},
+    {s:"Cameron viene ___ Australia.", ans:["dall'"]},
+    {s:"Gli italiani adorano le ragazze ___ gli occhi azzurri e ___ i capelli biondi.", ans:["con","con"]},
+    {s:"___ Alpi, ___ 4000 metri, c'è la neve ___ estate e ___ inverno.", ans:["Sulle","a","d'","d'"]},
+    {s:"Noi dormiamo fino ___ tardi perché andiamo ___ letto sempre dopo le 2 ___ notte.", ans:["a","a","di"]},
+    {s:"___ fronte ___ scuola c'è un bar. Andiamo ___ prendere un caffè?", ans:["Di","alla","a"]},
+    {s:"Vicino ___ Duomo c'è un ristorante ___ cucina cinese.", ans:["al","di"]},
+    {s:"Mio fratello lavora ___ ufficio ___ suo suocero.", ans:["nell'","del"]},
+    {s:"Gianni parte ___ aereo ___ 11 ___ Milano.", ans:["in","alle","per"]},
+    {s:"___ città italiane, preferisco Firenze.", ans:["Fra le"]},
+    {s:"___ appartamento ___ mio cugino c'è un bellissimo tavolo antico.", ans:["Nell'","del"]},
+  ],
+  3: [
+    {s:"Ti aspetto ___ 7 davanti ___ scuola.", ans:["alle","alla"]},
+    {s:"Oggi vengo ___ discoteca con voi, ma domani preferisco andare ___ concerto ___ Zucchero.", ans:["in","al","di"]},
+    {s:"Il mio amico viene ___ Ungheria ___ i suoi genitori.", ans:["dall'","con"]},
+    {s:"___ mesi ___ giugno, luglio, agosto, vengo ___ centro ___ motorino.", ans:["Nei","di","in","in"]},
+    {s:"___ autunno, inverno e primavera preferisco venire ___ autobus o ___ la macchina.", ans:["In","in","con"]},
+    {s:"Voi siete troppo pallidi, dovete andare ___ ospedale ___ fare le analisi ___ sangue.", ans:["all'","a","del"]},
+    {s:"Quando vado in vacanza, preferisco arrivare ___ aeroporto almeno due ore prima ___ partenza.", ans:["all'","della"]},
+    {s:"___ quel negozio ___ abbigliamento vendono una gonna bianca ___ cotone ___ ultima moda.", ans:["In","di","di","dell'"]},
+    {s:"Quanto costa spedire un espresso ___ Stati Uniti?", ans:["negli"]},
+    {s:"___ che ora andate ___ pranzo? ___ solito andiamo ___ 13 e 30.", ans:["A","a","Di","alle"]},
+    {s:"Oggi dobbiamo passare ___ prendere i nostri amici ___ stazione.", ans:["a","alla"]},
+  ],
+  4: [
+    {s:"Io amo molto mangiare: mi piace ___ tutto, ___ antipasto ___ dolce.", ans:["di","dall'","al"]},
+    {s:"Adoro gli gnocchi, le lasagne ___ forno, il pollo ___ le patatine fritte.", ans:["al","con"]},
+    {s:"Voglio andare ___ dietologo ___ dimagrire almeno 10 chili.", ans:["dal","per"]},
+    {s:"Il dottore è un bell'uomo ___ 36 anni, è moro, ha gli occhi verdi.", ans:["di"]},
+    {s:"Mi guarda ___ un sorriso molto dolce.", ans:["con"]},
+    {s:"Così mi prescrive una dieta. ___ un mese devo mangiare solo:", ans:["Per"]},
+    {s:"___ colazione: una tazza ___ latte con tre biscotti ___ soia.", ans:["A","di","alla"]},
+    {s:"___ pranzo: un piatto ___ spaghetti ___ pomodoro e una fetta ___ ananas.", ans:["A","di","al","di"]},
+    {s:"___ merenda: un cappuccino ___ dolcificante.", ans:["A","al"]},
+    {s:"___ cena: una bistecca ___ griglia o ___ gamberi lessati ___ un po' ___ verdura.", ans:["A","alla","con","con","di"]},
+    {s:"Prima ___ andare ___ letto: una tisana ___ camomilla.", ans:["di","a","alla"]},
+  ]
+};
+
+let prepEx=1, prepIdx=0, prepAnswers=[], prepCorrect=0, prepWrong=0;
+
+function startPrep(n){
+  prepEx=n;prepIdx=0;prepCorrect=0;prepWrong=0;
+  // Update subnav
+  [1,2,3,4].forEach(i=>{
+    const b=document.getElementById('psn-'+i);
+    if(b)b.classList.toggle('on',i===n);
+  });
+  showPrepQ();
+}
+
+function showPrepQ(){
+  const ex=PREP_EXERCISES[prepEx];
+  if(prepIdx>=ex.length){endPrep();return;}
+  const q=ex[prepIdx];
+  document.getElementById('prepProg').textContent=(prepIdx+1)+' / '+ex.length;
+  let n=0;
+  const rendered=q.s.replace(/___/g,()=>{
+    const i=n++;
+    return`<input class="prep-inline" id="pi${i}" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkPrep()">`;
+  });
+  document.getElementById('prepSentence').innerHTML=rendered;
+  document.getElementById('prepFb').className='qfb';
+  document.getElementById('prepNext').className='btn-next';
+  // Hide old single input row
+  document.getElementById('prepInput').style.display='none';
+  document.querySelector('.btn-chk').style.display='none';
+  // Show inline check button
+  if(!document.getElementById('prepCheckBtn')){
+    const btn=document.createElement('button');
+    btn.id='prepCheckBtn';btn.className='btn-chk';btn.style.width='100%';btn.style.marginBottom='12px';
+    btn.textContent='Prüfen';btn.onclick=checkPrep;
+    document.getElementById('prepFb').before(btn);
+  }
+  document.getElementById('prepCheckBtn').style.display='';
+  const first=document.getElementById('pi0');
+  if(first)first.focus();
+}
+
+function checkPrep(){
+  const q=PREP_EXERCISES[prepEx][prepIdx];
+  const correct=q.ans.map(a=>a.toLowerCase());
+  let allOk=true;
+  correct.forEach((c,i)=>{
+    const inp=document.getElementById('pi'+i);
+    if(!inp)return;
+    const val=inp.value.trim().toLowerCase();
+    if(val===c){inp.className='prep-inline ok';}
+    else{inp.className='prep-inline err';allOk=false;}
+    inp.disabled=true;
+  });
+  const fb=document.getElementById('prepFb');
+  if(allOk){
+    fb.textContent='✓ Richtig!';fb.className='qfb on ok';prepCorrect++;
+  } else {
+    fb.textContent='✗ Richtig: '+q.ans.join(', ');fb.className='qfb on err';prepWrong++;
+  }
+  document.getElementById('prepNext').className='btn-next on';
+  if(document.getElementById('prepCheckBtn'))document.getElementById('prepCheckBtn').style.display='none';
+}
+
+function nextPrep(){
+  prepIdx++;
+  showPrepQ();
+}
+
+function endPrep(){
+  const pct=Math.round(prepCorrect/(prepCorrect+prepWrong)*100)||0;
+  document.getElementById('prepSentence').innerHTML='';
+  document.getElementById('prepProg').textContent='';
+  document.getElementById('prepFb').className='qfb';
+  document.getElementById('prepNext').className='btn-next';
+  document.getElementById('prepInput').style.display='none';
+  document.querySelector('.btn-chk').style.display='none';
+  document.getElementById('prepSentence').innerHTML=
+    '<div style="text-align:center;padding:1rem 0;">'+
+    '<div class="score-circle" style="margin:0 auto 1rem;">'+pct+'%</div>'+
+    '<div style="font-size:14px;color:var(--g4);">'+prepCorrect+' richtig / '+prepWrong+' falsch</div>'+
+    '<button class="btn-prim" style="margin-top:1.5rem;" onclick="restartPrep()">Nochmals</button>'+
+    '</div>';
+}
+
+function restartPrep(){
+  startPrep(prepEx);
+}
+
+
+// ======================== VERBI RIFLESSIVI ========================
+const RIF_EXERCISES = {
+  1: [
+    {s:"Io ___ (addormentarsi) alle dieci di sera.", ans:["mi addormento"]},
+    {s:"Tu ___ (fermarsi) al bar per fare colazione.", ans:["ti fermi"]},
+    {s:"Lei ___ (divertirsi) sempre alle feste.", ans:["si diverte"]},
+    {s:"Noi ___ il prossimo anno.", ans:["ci laureiamo"]},
+    {s:"Voi ___ (sentirsi) bene.", ans:["vi sentite"]},
+    {s:"Loro ___ (sposarsi) a Natale.", ans:["si sposano"]},
+    {s:"Io ___ (svegliarsi) presto la mattina.", ans:["mi sveglio"]},
+    {s:"Tu ___ (arrabbiarsi) facilmente.", ans:["ti arrabbi"]},
+    {s:"Lui ___ (annoiarsi) quando piove.", ans:["si annoia"]},
+    {s:"Noi ___ prima di uscire.", ans:["ci laviamo"]},
+    {s:"Voi ___ (alzarsi) tardi il fine-settimana.", ans:["vi alzate"]},
+    {s:"Loro ___ (chiamarsi) Mario e Maria.", ans:["si chiamano"]},
+    {s:"Tu ___ (sentirsi) meglio oggi?", ans:["ti senti"]},
+    {s:"Siamo stanchi e ___ (addormentarsi) presto.", ans:["ci addormentiamo"]},
+    {s:"Io ___ (mettersi) un vestito nuovo.", ans:["mi metto"]},
+    {s:"Tu ___ (prepararsi) per uscire.", ans:["ti prepari"]},
+  ],
+  2: [
+    {s:"Giovanni ___ ogni mattina alle sette. (alzarsi)", ans:["si alza"]},
+    {s:"Le ragazze e i ragazzi ___ in discoteca. (ubriacarsi)", ans:["si ubriacano"]},
+    {s:"Tu ___ elegantemente per andare a lavoro. (vestirsi)", ans:["ti vesti"]},
+    {s:"Io non ___ mai con l'acqua fredda.", ans:["mi lavo"]},
+    {s:"Il fine settimana noi ___ molto tardi. (addormentarsi)", ans:["ci addormentiamo"]},
+    {s:"Tu ___ Francesca? (chiamarsi)", ans:["ti chiami"]},
+    {s:"Lui non ___ bene. (sentirsi)", ans:["si sente"]},
+    {s:"Voi ___ dopo cena. (incontrarsi)", ans:["vi incontrate"]},
+  ]
+};
+
+let rifEx=1, rifIdx=0, rifCorrect=0, rifWrong=0;
+
+function startRif(n){
+  rifEx=n; rifIdx=0; rifCorrect=0; rifWrong=0;
+  [1,2].forEach(i=>{
+    const b=document.getElementById('rpsn-'+i);
+    if(b) b.classList.toggle('on', i===n);
+  });
+  showRifQ();
+}
+
+function showRifQ(){
+  const ex=RIF_EXERCISES[rifEx];
+  if(rifIdx>=ex.length){endRif();return;}
+  const q=ex[rifIdx];
+  document.getElementById('rifProg').textContent=(rifIdx+1)+' / '+ex.length;
+  let n=0;
+  const rendered=q.s.replace(/___/g,()=>{
+    const i=n++;
+    return`<input class="prep-inline" id="ri${i}" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter')checkRif()">`;
+  });
+  document.getElementById('rifSentence').innerHTML=rendered;
+  document.getElementById('rifFb').className='qfb';
+  document.getElementById('rifNext').className='btn-next';
+  // Add check button if not exists
+  if(!document.getElementById('rifCheckBtn')){
+    const btn=document.createElement('button');
+    btn.id='rifCheckBtn'; btn.className='btn-chk'; btn.style.width='100%'; btn.style.marginBottom='12px';
+    btn.textContent='Prüfen'; btn.onclick=checkRif;
+    document.getElementById('rifFb').before(btn);
+  }
+  document.getElementById('rifCheckBtn').style.display='';
+  const first=document.getElementById('ri0');
+  if(first) first.focus();
+}
+
+function checkRif(){
+  const q=RIF_EXERCISES[rifEx][rifIdx];
+  const correct=q.ans.map(a=>a.toLowerCase());
+  let allOk=true;
+  correct.forEach((c,i)=>{
+    const inp=document.getElementById('ri'+i);
+    if(!inp) return;
+    const val=inp.value.trim().toLowerCase();
+    if(val===c){inp.className='prep-inline ok';}
+    else{inp.className='prep-inline err'; allOk=false;}
+    inp.disabled=true;
+  });
+  const fb=document.getElementById('rifFb');
+  if(allOk){
+    fb.textContent='✓ Richtig!'; fb.className='qfb on ok'; rifCorrect++;
+  } else {
+    fb.textContent='✗ Richtig: '+q.ans.join(', '); fb.className='qfb on err'; rifWrong++;
+  }
+  document.getElementById('rifNext').className='btn-next on';
+  if(document.getElementById('rifCheckBtn')) document.getElementById('rifCheckBtn').style.display='none';
+}
+
+function nextRif(){
+  rifIdx++;
+  showRifQ();
+}
+
+function endRif(){
+  const total=rifCorrect+rifWrong;
+  const pct=total>0?Math.round(rifCorrect/total*100):0;
+  document.getElementById('rifSentence').innerHTML=
+    '<div style="text-align:center;padding:1rem 0;">'+
+    '<div class="score-circle" style="margin:0 auto 1rem;">'+pct+'%</div>'+
+    '<div style="font-size:14px;color:var(--g4);">'+rifCorrect+' richtig / '+rifWrong+' falsch</div>'+
+    '<button class="btn-prim" style="margin-top:1.5rem;" onclick="startRif(rifEx)">Nochmals</button>'+
+    '</div>';
+  document.getElementById('rifProg').textContent='';
+  document.getElementById('rifFb').className='qfb';
+  document.getElementById('rifNext').className='btn-next';
+  if(document.getElementById('rifCheckBtn')) document.getElementById('rifCheckBtn').style.display='none';
+}
+
 </script>
 </body>
 </html>
