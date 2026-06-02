@@ -1196,7 +1196,7 @@ const selectedVerbs=new Set(V.map(v=>v.it));
 const PRN=['io','tu','lui/lei','noi','voi','loro'];
 const TNS={presente:'Presente',imperfetto:'Imperfetto',futuro:'Futuro',passato:'Passato prossimo'};
 
-let dk=[],di=0,dok=0,dno=0,flp=false,sTopic=null,aConj=null,aTense='presente',qV=null,qT='presente',qP=0,wrongCards=[];
+let streak=0,dk=[],di=0,dok=0,dno=0,flp=false,sTopic=null,aConj=null,aTense='presente',qV=null,qT='presente',qP=0,wrongCards=[];
 
 function go(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
