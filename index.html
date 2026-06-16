@@ -253,6 +253,16 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .prep-inline.ok{border-bottom-color:#1A6B38;color:#1A6B38;}
 .prep-inline.err{border-bottom-color:#9A1A1A;color:#9A1A1A;}
 
+
+/* PRONOMI */
+.pron-table{width:100%;border-collapse:collapse;margin-bottom:2rem;font-family:'Garet',sans-serif;table-layout:auto;}
+.pron-table th{background:var(--black);color:#fff;padding:9px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-align:center;white-space:nowrap;}
+.pron-table td{padding:9px 10px;text-align:center;font-size:13px;font-weight:400;border:1px solid var(--g2);white-space:nowrap;}
+.pron-table td.row-label{background:var(--g2);font-weight:700;color:var(--black);}
+.pron-table tr:nth-child(even) td{background:var(--g1);}
+.pron-table tr:nth-child(odd) td{background:#fff;}
+.pron-table tr:nth-child(even) td.row-label,.pron-table tr:nth-child(odd) td.row-label{background:var(--g2);}
+.pron-note{font-family:'Garet',sans-serif;font-size:12px;color:var(--g4);margin-bottom:2rem;font-style:italic;}
 </style>
 </head>
 <body>
@@ -275,7 +285,7 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
       
       <h2>Vocabolario</h2>
       <p>Lerne Wörter nach Themen mit Flashcards.</p>
-      <div class="hc-pills"><span class="pill">23 Themen</span><span class="pill">700+ Wörter</span><span class="pill">Flashcards</span></div>
+      <div class="hc-pills"><span class="pill">25 Themen</span><span class="pill">700+ Wörter</span><span class="pill">Flashcards</span></div>
       <div class="hc-arr">→</div>
     </div>
     <div class="hc dark" onclick="go('verbs')">
@@ -283,6 +293,12 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
       <h2>Trainer Verbi</h2>
       <p>Lerne die 50 wichtigsten Verben konjugieren in presente, imperfetto, passato prossimo und futuro semplice.</p>
       <div class="hc-pills"><span class="pill">50 Verben</span><span class="pill">4 Zeiten</span><span class="pill">Coniugare</span></div>
+      <div class="hc-arr">→</div>
+    </div>
+    <div class="hc" onclick="go('pronomi')" style="margin-top:14px;">
+      <h2>Pronomi</h2>
+      <p>Pronomi diretti, indiretti e combinati — Übersichten und Lückentexte.</p>
+      <div class="hc-pills"><span class="pill">Pronomi combinati</span><span class="pill">Übersicht</span><span class="pill">Esercizi</span></div>
       <div class="hc-arr">→</div>
     </div>
     <div class="hc" onclick="go('prep')" style="margin-top:14px;">
@@ -440,6 +456,153 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
     <button class="btn-next" id="prepNext" onclick="nextPrep()">Nächster Satz →</button>
   </div>
 </div>
+
+<!-- PRONOMI -->
+<div id="s-pronomi" class="section">
+  <div class="sec-h">
+    <h2>Pronomi</h2>
+    <button class="btn-back" onclick="go('home')">← Zurück</button>
+  </div>
+  <div class="snav" style="margin-bottom:2rem;">
+    <button class="sn on" id="psn-comb" onclick="pronTab('combinati')">Pronomi combinati</button>
+    <button class="sn" id="psn-dir" onclick="pronTab('diretti')" style="opacity:0.4;cursor:default">Pronomi diretti</button>
+    <button class="sn" id="psn-ind" onclick="pronTab('indiretti')">Pronomi indiretti</button>
+  </div>
+
+  <!-- COMBINATI -->
+  <div id="pron-combinati">
+    <div class="snav" style="margin-bottom:1.5rem;">
+      <button class="sn on" id="pcomb-sn-1" onclick="pronCombTab('tabella')">Tabella</button>
+      <button class="sn" id="pcomb-sn-2" onclick="pronCombTab('esercizio')">Esercizio</button>
+    </div>
+
+    <!-- TABELLA -->
+    <div id="pcomb-tabella">
+      <p style="font-family:'Garet',sans-serif;font-size:14px;color:var(--g4);margin-bottom:1.5rem;">
+        I pronomi combinati si formano unendo un pronome indiretto con uno diretto.
+      </p>
+      <div style="overflow-x:auto;">
+      <table class="pron-table">
+        <thead>
+          <tr>
+            <th style="background:var(--black)"></th>
+            <th>LO</th>
+            <th>LA</th>
+            <th>LI</th>
+            <th>LE</th>
+            <th>NE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-label">MI</td><td>me lo</td><td>me la</td><td>me li</td><td>me le</td><td>me ne</td></tr>
+          <tr><td class="row-label">TI</td><td>te lo</td><td>te la</td><td>te li</td><td>te le</td><td>te ne</td></tr>
+          <tr><td class="row-label">GLI, LE</td><td>glielo</td><td>gliela</td><td>glieli</td><td>gliele</td><td>gliene</td></tr>
+          <tr><td class="row-label">CI</td><td>ce lo</td><td>ce la</td><td>ce li</td><td>ce le</td><td>ce ne</td></tr>
+          <tr><td class="row-label">VI</td><td>ve lo</td><td>ve la</td><td>ve li</td><td>ve le</td><td>ve ne</td></tr>
+          <tr><td class="row-label">GLI</td><td>glielo</td><td>gliela</td><td>glieli</td><td>gliele</td><td>gliene</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="pron-note">* GLI, LE (3. Person Singular) und GLI (3. Person Plural) haben dieselben kombinierten Formen.</p>
+    </div>
+
+    <!-- ESERCIZIO -->
+    <div id="pcomb-esercizio" style="display:none">
+      <div class="qcard">
+        <p style="font-family:'Garet',sans-serif;font-size:14px;font-weight:700;margin-bottom:1.5rem;">Metti il pronome combinato al posto giusto.</p>
+        <div id="pcomb-prog" style="font-family:'Garet',sans-serif;font-size:12px;color:var(--g3);margin-bottom:1rem;"></div>
+        <div id="pcomb-sentence" style="font-family:'Garet',sans-serif;font-size:16px;line-height:2.4;margin-bottom:1.5rem;"></div>
+        <div class="qfb" id="pcomb-fb"></div>
+        <button class="btn-next" id="pcomb-next" onclick="nextPcomb()">Nächster Satz →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="pron-diretti" style="display:none">
+    <div class="snav" style="margin-bottom:1.5rem;">
+      <button class="sn on" id="pdir-sn-1" onclick="pronDirTab('tabella')">Tabella</button>
+      <button class="sn" id="pdir-sn-2" onclick="pronDirTab('esercizio')">Esercizio</button>
+    </div>
+
+    <!-- TABELLA DIRETTI -->
+    <div id="pdir-tabella">
+      <p style="font-family:'Garet',sans-serif;font-size:14px;color:var(--g4);margin-bottom:1.5rem;">
+        I pronomi diretti sostituiscono il complemento oggetto diretto.
+      </p>
+      <table class="pron-table">
+        <thead>
+          <tr>
+            <th>SOGGETTO</th>
+            <th>PRONOMI DIRETTI</th>
+            <th>DEUTSCH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-label">io</td><td><strong>mi</strong></td><td><em>mich</em></td></tr>
+          <tr><td class="row-label">tu</td><td><strong>ti</strong></td><td><em>dich</em></td></tr>
+          <tr><td class="row-label">lui | lei</td><td><strong>lo | la</strong></td><td><em>ihn, es | sie, Sie</em></td></tr>
+          <tr><td class="row-label">noi</td><td><strong>ci</strong></td><td><em>uns</em></td></tr>
+          <tr><td class="row-label">voi</td><td><strong>vi</strong></td><td><em>euch</em></td></tr>
+          <tr><td class="row-label">loro</td><td><strong>li | le</strong></td><td><em>sie (m | f)</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ESERCIZIO DIRETTI -->
+    <div id="pdir-esercizio" style="display:none">
+      <div class="qcard">
+        <p style="font-family:'Garet',sans-serif;font-size:14px;font-weight:700;margin-bottom:1.5rem;">Scrivi il pronome diretto.</p>
+        <div id="pdir-prog" style="font-family:'Garet',sans-serif;font-size:12px;color:var(--g3);margin-bottom:1rem;"></div>
+        <div id="pdir-sentence" style="font-family:'Garet',sans-serif;font-size:16px;line-height:2.4;margin-bottom:1.5rem;"></div>
+        <div class="qfb" id="pdir-fb"></div>
+        <button class="btn-next" id="pdir-next" onclick="nextPdir()">Nächster Satz →</button>
+      </div>
+    </div>
+  </div>
+  <div id="pron-indiretti" style="display:none">
+    <div class="snav" style="margin-bottom:1.5rem;">
+      <button class="sn on" id="pind-sn-1" onclick="pronIndTab('tabella')">Tabella</button>
+      <button class="sn" id="pind-sn-2" onclick="pronIndTab('esercizio')">Esercizio</button>
+    </div>
+
+    <!-- TABELLA INDIRETTI -->
+    <div id="pind-tabella">
+      <p style="font-family:'Garet',sans-serif;font-size:14px;color:var(--g4);margin-bottom:1.5rem;">
+        I pronomi indiretti sostituiscono il complemento di termine (a + persona).
+      </p>
+      <table class="pron-table">
+        <thead>
+          <tr>
+            <th>SOGGETTO</th>
+            <th>PRONOMI INDIRETTI</th>
+            <th>DEUTSCH</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-label">io</td><td><strong>mi</strong> · a me</td><td><em>mir</em></td></tr>
+          <tr><td class="row-label">tu</td><td><strong>ti</strong> · a te</td><td><em>dir</em></td></tr>
+          <tr><td class="row-label">lui</td><td><strong>gli</strong> · a lui</td><td><em>ihm</em></td></tr>
+          <tr><td class="row-label">lei</td><td><strong>le</strong> · a lei</td><td><em>ihr, Ihnen (höflich)</em></td></tr>
+          <tr><td class="row-label">noi</td><td><strong>ci</strong> · a noi</td><td><em>uns</em></td></tr>
+          <tr><td class="row-label">voi</td><td><strong>vi</strong> · a voi</td><td><em>euch</em></td></tr>
+          <tr><td class="row-label">loro</td><td><strong>gli</strong> · a loro</td><td><em>ihnen (m | f)</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ESERCIZIO INDIRETTI -->
+    <div id="pind-esercizio" style="display:none">
+      <div class="qcard">
+        <p style="font-family:'Garet',sans-serif;font-size:14px;font-weight:700;margin-bottom:1.5rem;">Scrivi i pronomi indiretti.</p>
+        <div id="pind-prog" style="font-family:'Garet',sans-serif;font-size:12px;color:var(--g3);margin-bottom:1rem;"></div>
+        <div id="pind-sentence" style="font-family:'Garet',sans-serif;font-size:16px;line-height:2.4;margin-bottom:1.5rem;"></div>
+        <div class="qfb" id="pind-fb"></div>
+        <button class="btn-next" id="pind-next" onclick="nextPind()">Nächster Satz →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
 
 <script>
@@ -1137,6 +1300,88 @@ const T=[
     {de:'klar',it:'chiaro',ex:"L'acqua del lago è chiara e trasparente."},
     {de:'sanft',it:'morbido',ex:"Le colline morbide della Toscana."},
   ]},
+  {id:'aggettivi',icon:'📝',name:'Aggettivi',words:[
+    {de:'gut',it:'buono',ex:"Questo caffè è molto buono."},
+    {de:'schlecht / böse',it:'cattivo',ex:"Il tempo cattivo mi deprime."},
+    {de:'schön',it:'bello',ex:"Firenze è una città bellissima."},
+    {de:'hässlich',it:'brutto',ex:"Che brutto tempo oggi!"},
+    {de:'warm',it:'caldo',ex:"L'estate in Italia è molto calda."},
+    {de:'kalt',it:'freddo',ex:"L'acqua del lago è fredda."},
+    {de:'groß (Größe allgemein)',it:'grande',ex:"Roma è una grande città."},
+    {de:'klein',it:'piccolo',ex:"Il mio appartamento è piccolo ma carino."},
+    {de:'groß (Höhe)',it:'alto',ex:"Marco è molto alto."},
+    {de:'klein (Höhe)',it:'basso',ex:"Il muro è troppo basso."},
+    {de:'neu',it:'nuovo',ex:"Ho comprato una macchina nuova."},
+    {de:'jung',it:'giovane',ex:"È ancora giovane, ha vent'anni."},
+    {de:'alt (Dinge)',it:'vecchio',ex:"Questo è un palazzo molto vecchio."},
+    {de:'alt / älter (Menschen)',it:'anziano',ex:"Il signore anziano abita al piano di sopra."},
+    {de:'antik / altertümlich',it:'antico',ex:"Il museo ha molti oggetti antichi."},
+    {de:'dünn',it:'magro',ex:"È magra perché fa sport ogni giorno."},
+    {de:'fett / dick',it:'grasso',ex:"Il gatto è grasso e pigro."},
+    {de:'hübsch / nett',it:'carino',ex:"Che bambino carino!"},
+    {de:'süß',it:'dolce',ex:"Questa torta è troppo dolce."},
+    {de:'bitter',it:'amaro',ex:"Il caffè senza zucchero è amaro."},
+    {de:'scharf / pikant',it:'piccante',ex:"La pasta all'arrabbiata è molto piccante."},
+    {de:'sauer',it:'aspro',ex:"Il limone è aspro e acido."},
+    {de:'glücklich',it:'felice',ex:"Sono felice di vederti!"},
+    {de:'traurig',it:'triste',ex:"Mi sento triste oggi."},
+    {de:'fröhlich',it:'allegro',ex:"È sempre allegro e sorridente."},
+    {de:'einfach',it:'facile',ex:"Questo esercizio è molto facile."},
+    {de:'schwierig',it:'difficile',ex:"La matematica è difficile per me."},
+    {de:'weich',it:'morbido',ex:"Il cuscino è morbido e comodo."},
+    {de:'hart',it:'duro',ex:"Questo pane è troppo duro."},
+    {de:'leicht',it:'leggero',ex:"La borsa è leggera, non pesa niente."},
+    {de:'schwer',it:'pesante',ex:"La valigia è troppo pesante."},
+    {de:'lang',it:'lungo',ex:"Hai i capelli molto lunghi."},
+    {de:'kurz',it:'corto',ex:"In estate porto i capelli corti."},
+    {de:'eng',it:'stretto',ex:"Questa gonna è troppo stretta."},
+    {de:'weit / breit',it:'largo',ex:"Il corridoio è largo e luminoso."},
+    {de:'lieb / teuer',it:'caro',ex:"Sei molto caro a me."},
+    {de:'teuer',it:'costoso',ex:"Questo ristorante è troppo costoso."},
+    {de:'preiswert / günstig',it:'economico',ex:"Ho trovato un hotel economico."},
+    {de:'berühmt',it:'famoso',ex:"Leonardo da Vinci è famoso in tutto il mondo."},
+    {de:'bequem',it:'comodo',ex:"Questo divano è molto comodo."},
+    {de:'unbequem',it:'scomodo',ex:"La sedia è scomoda per la schiena."},
+    {de:'interessant',it:'interessante',ex:"Il libro è molto interessante."},
+    {de:'langweilig',it:'noioso',ex:"Il film era noioso."},
+    {de:'langsam',it:'lento',ex:"Il treno è lento oggi."},
+    {de:'schnell',it:'veloce',ex:"La Ferrari è molto veloce."},
+    {de:'höflich',it:'gentile',ex:"Il cameriere è gentile con tutti."},
+    {de:'sympathisch',it:'simpatico',ex:"La tua amica è molto simpatica."},
+    {de:'unsympathisch',it:'antipatico',ex:"Il nuovo vicino è un po' antipatico."},
+    {de:'lustig / amüsant',it:'divertente',ex:"Il film era molto divertente."},
+    {de:'faul',it:'pigro',ex:"Non studiare, sei pigro!"},
+  ]},
+  {id:'parole_miste',icon:'🌟',name:'Le parole miste',words:[
+    {de:'pur (Getränk ohne Zusatz)',it:'liscio',ex:"Come lo preferisci il whisky, liscio o con ghiaccio?"},
+    {de:'stattlich / imponierend',it:'imponente',ex:"Luigi ha proprio un aspetto imponente."},
+    {de:'Wäschetrockner',it:"l'asciugatrice",ex:"Nel periodo invernale uso l'asciugatrice."},
+    {de:'Feldweg',it:'il viottolo',ex:"La strada era in realtà un piccolo viottolo di campagna."},
+    {de:'sternenklar',it:'stellato',ex:"Che notte limpida e stellata!"},
+    {de:'Feldsalat / Vogerlsalat',it:"l'insalata valeriana",ex:"L'insalata valeriana è molto sana."},
+    {de:'Arkaden / Bogengang',it:'il porticato',ex:"Lungo il cortile interno c'è un bel porticato."},
+    {de:'süß-sauer eingelegte Zwiebeln',it:'le cipolle in agro',ex:"Le cipolle in agro sono ottime come contorno."},
+    {de:'folgen / verfolgen',it:'seguire',ex:"Seguo le sue storie su Instagram."},
+    {de:'Geschmack',it:'il sapore',ex:"Che sapore ha questo piatto?"},
+    {de:'immerwährend / ewig',it:'perenne',ex:"La montagna è così alta che la neve è perenne."},
+    {de:'planen',it:'progettare',ex:"L'architetto ha progettato l'Acquario di Genova."},
+    {de:'Vorspeise',it:"l'antipasto",ex:"Condividiamo l'antipasto."},
+    {de:'Vollmond',it:'la luna piena',ex:"Il cielo stanotte è illuminato da una bellissima luna piena."},
+    {de:'endlich',it:'finalmente',ex:"Ho finalmente avuto il tempo di leggere il mio libro fino alla fine."},
+    {de:'Pottwal',it:'il capodoglio',ex:"Il capodoglio è il più grande predatore del mare."},
+    {de:'Was ist passiert?',it:'Che cosa è successo?',ex:"Che cosa è successo? Sei pallido!"},
+    {de:'Rinde / Schale (Zitrusfrüchte)',it:'la scorza',ex:"Aggiungo la scorza di limone alla torta."},
+    {de:'auf dem Höhepunkt sein',it:'essere in auge',ex:"Questo cantante è molto in auge adesso."},
+    {de:'verschieben',it:'rimandare',ex:"Dobbiamo rimandare ad un'altra data la cena all'aperto."},
+    {de:'Sprichwort',it:'il proverbio',ex:"I proverbi italiani sono molto sapienti."},
+    {de:'Haltung / Verhalten / Einstellung',it:"l'atteggiamento",ex:"Ha un atteggiamento molto positivo."},
+    {de:'Fahrräder abstellen',it:'mettere le biciclette in un luogo sicuro',ex:"Possiamo mettere le biciclette in un luogo sicuro?"},
+    {de:'bezahlen',it:'pagare',ex:"Dobbiamo pagare ora o alla fine?"},
+    {de:'fehlen',it:'mancare',ex:"La cintura manca."},
+    {de:'am Ende seiner Kräfte sein',it:'essere in gin di vita',ex:"Io sono in gin di vita."},
+    {de:'Schade!',it:'Peccato!',ex:"Purtroppo non posso venire alla festa. Peccato!"},
+    {de:'Schön wäre es!',it:'Magari!',ex:"Vai anche tu in vacanza ai Caraibi? Magari!"},
+  ]},
 ];
 
 const V=[
@@ -1648,6 +1893,340 @@ function endRif(){
   document.getElementById('rifFb').className='qfb';
   document.getElementById('rifNext').className='btn-next';
   if(document.getElementById('rifCheckBtn')) document.getElementById('rifCheckBtn').style.display='none';
+}
+
+
+// ======================== PRONOMI ========================
+function pronTab(tab) {
+  ['combinati','diretti','indiretti'].forEach(t => {
+    document.getElementById('pron-'+t).style.display = t===tab ? '' : 'none';
+  });
+  document.getElementById('psn-comb').classList.toggle('on', tab==='combinati');
+}
+
+function pronCombTab(tab) {
+  document.getElementById('pcomb-tabella').style.display = tab==='tabella' ? '' : 'none';
+  document.getElementById('pcomb-esercizio').style.display = tab==='esercizio' ? '' : 'none';
+  document.getElementById('pcomb-sn-1').classList.toggle('on', tab==='tabella');
+  document.getElementById('pcomb-sn-2').classList.toggle('on', tab==='esercizio');
+  if(tab==='esercizio') startPcomb();
+}
+
+const PCOMB_EX = [
+  {orig:"Do il quaderno a Maria.", s:"___ ___ do.", ans:"glielo"},
+  {orig:"Paolo manda una lettera a me.", s:"___ ___ manda.", ans:"me la"},
+  {orig:"Racconti la storia a noi.", s:"___ ___ racconti.", ans:"ce la"},
+  {orig:"Il professore spiega l'argomento a voi.", s:"___ ___ spiega.", ans:"ve lo"},
+  {orig:"Do un chilo di fragole a mio figlio.", s:"___ ___ do un chilo.", ans:"gliene"},
+  {orig:"Compra una maglietta per Sara.", s:"___ ___ compra.", ans:"gliela"},
+  {orig:"Presto dei libri a Luisa.", s:"___ ___ presto.", ans:"glieli"},
+  {orig:"Do un pezzo di torta a te.", s:"___ ___ do un pezzo.", ans:"te ne"},
+  {orig:"Spedisco le fatture ai miei colleghi.", s:"___ ___ spedisco.", ans:"gliele"},
+  {orig:"Dai a me gli occhiali.", s:"___ ___ dai.", ans:"me li"},
+];
+
+let pcombIdx = 0, pcombOk = 0, pcombWrong = 0;
+
+function startPcomb() {
+  pcombIdx = 0; pcombOk = 0; pcombWrong = 0;
+  showPcomb();
+}
+
+function showPcomb() {
+  const ex = PCOMB_EX;
+  if(pcombIdx >= ex.length) { endPcomb(); return; }
+  const q = ex[pcombIdx];
+  document.getElementById('pcomb-prog').textContent = (pcombIdx+1) + ' / ' + ex.length;
+
+  const words = q.ans.split(' ');
+  let rendered = '';
+  if(words.length === 1) {
+    rendered = q.s.replace('___ ___', '<input class="prep-inline" id="pci0" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:90px">');
+  } else {
+    let n = 0;
+    rendered = q.s.replace(/___/g, () => {
+      const i = n++;
+      return '<input class="prep-inline" id="pci'+i+'" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:55px">';
+    });
+  }
+
+  document.getElementById('pcomb-sentence').innerHTML =
+    '<div style="font-size:13px;color:var(--g4);margin-bottom:8px;font-style:italic;">' + q.orig + '</div>' +
+    '<div style="font-size:17px;">' + rendered + '</div>';
+
+  document.querySelectorAll('#pcomb-sentence input').forEach(inp => {
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter') checkPcomb(); });
+  });
+
+  document.getElementById('pcomb-fb').className = 'qfb';
+  document.getElementById('pcomb-next').className = 'btn-next';
+
+  if(!document.getElementById('pcomb-checkBtn')) {
+    const btn = document.createElement('button');
+    btn.id = 'pcomb-checkBtn'; btn.className = 'btn-chk';
+    btn.style.width = '100%'; btn.style.marginBottom = '12px';
+    btn.textContent = 'Prüfen'; btn.onclick = checkPcomb;
+    document.getElementById('pcomb-fb').before(btn);
+  }
+  document.getElementById('pcomb-checkBtn').style.display = '';
+  const f = document.getElementById('pci0');
+  if(f) f.focus();
+}
+
+function checkPcomb() {
+  const q = PCOMB_EX[pcombIdx];
+  const words = q.ans.split(' ');
+  let allOk = true;
+  let userAns = '';
+
+  if(words.length === 1) {
+    const inp = document.getElementById('pci0');
+    if(inp) {
+      userAns = inp.value.trim().toLowerCase();
+      const ok = userAns === q.ans.toLowerCase();
+      inp.className = 'prep-inline ' + (ok ? 'ok' : 'err');
+      inp.disabled = true;
+      if(!ok) allOk = false;
+    }
+  } else {
+    words.forEach((w, i) => {
+      const inp = document.getElementById('pci'+i);
+      if(inp) {
+        const val = inp.value.trim().toLowerCase();
+        const ok = val === w.toLowerCase();
+        inp.className = 'prep-inline ' + (ok ? 'ok' : 'err');
+        inp.disabled = true;
+        if(!ok) allOk = false;
+      }
+    });
+  }
+
+  const fb = document.getElementById('pcomb-fb');
+  if(allOk) {
+    fb.textContent = '✓ Richtig!'; fb.className = 'qfb on ok'; pcombOk++;
+  } else {
+    fb.textContent = '✗ Richtig: ' + q.ans; fb.className = 'qfb on err'; pcombWrong++;
+  }
+  document.getElementById('pcomb-next').className = 'btn-next on';
+  document.getElementById('pcomb-checkBtn').style.display = 'none';
+}
+
+function nextPcomb() {
+  pcombIdx++;
+  showPcomb();
+}
+
+function endPcomb() {
+  const total = pcombOk + pcombWrong;
+  const pct = total > 0 ? Math.round(pcombOk/total*100) : 0;
+  document.getElementById('pcomb-sentence').innerHTML =
+    '<div style="text-align:center;padding:1rem 0;">' +
+    '<div class="score-circle" style="margin:0 auto 1rem;">' + pct + '%</div>' +
+    '<div style="font-size:14px;color:var(--g4);">' + pcombOk + ' richtig / ' + pcombWrong + ' falsch</div>' +
+    '<button class="btn-prim" style="margin-top:1.5rem;" onclick="startPcomb()">Nochmals</button>' +
+    '</div>';
+  document.getElementById('pcomb-prog').textContent = '';
+  document.getElementById('pcomb-fb').className = 'qfb';
+  document.getElementById('pcomb-next').className = 'btn-next';
+  if(document.getElementById('pcomb-checkBtn')) document.getElementById('pcomb-checkBtn').style.display = 'none';
+}
+
+
+// ======================== PRONOMI DIRETTI ========================
+function pronDirTab(tab) {
+  document.getElementById('pdir-tabella').style.display = tab === 'tabella' ? '' : 'none';
+  document.getElementById('pdir-esercizio').style.display = tab === 'esercizio' ? '' : 'none';
+  document.getElementById('pdir-sn-1').classList.toggle('on', tab === 'tabella');
+  document.getElementById('pdir-sn-2').classList.toggle('on', tab === 'esercizio');
+  if(tab === 'esercizio') startPdir();
+}
+
+const PDIR_EX = [
+  {orig:"Dove prendi il treno?", s:"___ prendo alla stazione.", ans:"Lo"},
+  {orig:"Conosci già mia moglie?", s:"No, non ___ conosco.", ans:"la"},
+  {orig:"Dove hai comprato questi bellissimi fiori?", s:"___ ho comprati dal fiorista.", ans:"Li"},
+  {orig:"Mi chiami tu più tardi?", s:"Sì, ___ chiamo quando arrivo a casa.", ans:"ti"},
+  {orig:"Bevi il caffè?", s:"Sì, ___ bevo tutte le mattine.", ans:"lo"},
+  {orig:"Non abbiamo la macchina. Ci accompagni all'aeroporto, per favore?", s:"Certo, ___ accompagno volentieri.", ans:"vi"},
+  {orig:"Leggi il giornale?", s:"Sì, ___ leggo mentre bevo il caffè.", ans:"lo"},
+  {orig:"Quando fai l'esame d'italiano?", s:"___ faccio domani, sono molto agitato!", ans:"Lo"},
+  {orig:"Ti piacciono le fragole?", s:"Sì, molto! ___ mangio sempre in estate.", ans:"Le"},
+  {orig:"Mangi spesso la pizza?", s:"Sì, ___ ordino quasi ogni sabato sera.", ans:"la"},
+];
+
+let pdirIdx = 0, pdirOk = 0, pdirWrong = 0;
+
+function startPdir() {
+  pdirIdx = 0; pdirOk = 0; pdirWrong = 0;
+  showPdir();
+}
+
+function showPdir() {
+  if(pdirIdx >= PDIR_EX.length) { endPdir(); return; }
+  const q = PDIR_EX[pdirIdx];
+  document.getElementById('pdir-prog').textContent = (pdirIdx+1) + ' / ' + PDIR_EX.length;
+
+  const rendered = q.s.replace('___',
+    '<input class="prep-inline" id="pdiri0" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:60px">');
+
+  document.getElementById('pdir-sentence').innerHTML =
+    '<div style="font-size:13px;color:var(--g4);margin-bottom:8px;font-style:italic;">' + q.orig + '</div>' +
+    '<div style="font-size:17px;">' + rendered + '</div>';
+
+  document.querySelectorAll('#pdir-sentence input').forEach(inp => {
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter') checkPdir(); });
+  });
+
+  document.getElementById('pdir-fb').className = 'qfb';
+  document.getElementById('pdir-next').className = 'btn-next';
+
+  if(!document.getElementById('pdir-checkBtn')) {
+    const btn = document.createElement('button');
+    btn.id = 'pdir-checkBtn'; btn.className = 'btn-chk';
+    btn.style.width = '100%'; btn.style.marginBottom = '12px';
+    btn.textContent = 'Prüfen'; btn.onclick = checkPdir;
+    document.getElementById('pdir-fb').before(btn);
+  }
+  document.getElementById('pdir-checkBtn').style.display = '';
+  const f = document.getElementById('pdiri0');
+  if(f) f.focus();
+}
+
+function checkPdir() {
+  const q = PDIR_EX[pdirIdx];
+  const inp = document.getElementById('pdiri0');
+  if(!inp) return;
+  const val = inp.value.trim().toLowerCase();
+  const ok = val === q.ans.toLowerCase();
+  inp.className = 'prep-inline ' + (ok ? 'ok' : 'err');
+  inp.disabled = true;
+  const fb = document.getElementById('pdir-fb');
+  if(ok) {
+    fb.textContent = '✓ Richtig!'; fb.className = 'qfb on ok'; pdirOk++;
+  } else {
+    fb.textContent = '✗ Richtig: ' + q.ans; fb.className = 'qfb on err'; pdirWrong++;
+  }
+  document.getElementById('pdir-next').className = 'btn-next on';
+  document.getElementById('pdir-checkBtn').style.display = 'none';
+}
+
+function nextPdir() {
+  pdirIdx++;
+  showPdir();
+}
+
+function endPdir() {
+  const total = pdirOk + pdirWrong;
+  const pct = total > 0 ? Math.round(pdirOk/total*100) : 0;
+  document.getElementById('pdir-sentence').innerHTML =
+    '<div style="text-align:center;padding:1rem 0;">' +
+    '<div class="score-circle" style="margin:0 auto 1rem;">' + pct + '%</div>' +
+    '<div style="font-size:14px;color:var(--g4);">' + pdirOk + ' richtig / ' + pdirWrong + ' falsch</div>' +
+    '<button class="btn-prim" style="margin-top:1.5rem;" onclick="startPdir()">Nochmals</button>' +
+    '</div>';
+  document.getElementById('pdir-prog').textContent = '';
+  document.getElementById('pdir-fb').className = 'qfb';
+  document.getElementById('pdir-next').className = 'btn-next';
+  if(document.getElementById('pdir-checkBtn')) document.getElementById('pdir-checkBtn').style.display = 'none';
+}
+
+
+// ======================== PRONOMI INDIRETTI ========================
+function pronIndTab(tab) {
+  document.getElementById('pind-tabella').style.display = tab === 'tabella' ? '' : 'none';
+  document.getElementById('pind-esercizio').style.display = tab === 'esercizio' ? '' : 'none';
+  document.getElementById('pind-sn-1').classList.toggle('on', tab === 'tabella');
+  document.getElementById('pind-sn-2').classList.toggle('on', tab === 'esercizio');
+  if(tab === 'esercizio') startPind();
+}
+
+const PIND_EX = [
+  {orig:"Vorrei una nuova gonna.", s:"___ piacciono le gonne corte.", ans:"Mi"},
+  {orig:"Quando è in vacanza, Sandra pensa spesso a sua mamma e ___ spedisce sempre una cartolina.", s:"Quando è in vacanza, Sandra pensa spesso a sua mamma e ___ spedisce sempre una cartolina.", ans:"le"},
+  {orig:"Ragazzi, ci vediamo domani a casa mia.", s:"Ragazzi, ci vediamo domani a casa mia, ___ do il mio indirizzo.", ans:"vi"},
+  {orig:"È il compleanno di mia sorella.", s:"___ ho regalato una collana.", ans:"Le"},
+  {orig:"Ho parlato con Fiona.", s:"Ho parlato con Fiona e ___ ho detto che tu non sei d'accordo.", ans:"le"},
+  {orig:"Hai telefonato ai tuoi genitori?", s:"Sì, ___ ho telefonato poco fa.", ans:"gli"},
+  {orig:"Karin non può andare in Italia.", s:"___ manca molto!", ans:"Le"},
+  {orig:"Sei il mio migliore amico.", s:"Sei il mio migliore amico, ___ voglio tanto bene!", ans:"ti"},
+  {orig:"Che ne pensi di andare al parco?", s:"Non ___ sembra una buona idea, sta piovendo!", ans:"mi"},
+  {orig:"Ho visto tuo cugino.", s:"Ho visto tuo cugino e ___ ho chiesto come sta sua moglie.", ans:"gli"},
+];
+
+let pindIdx = 0, pindOk = 0, pindWrong = 0;
+
+function startPind() {
+  pindIdx = 0; pindOk = 0; pindWrong = 0;
+  showPind();
+}
+
+function showPind() {
+  if(pindIdx >= PIND_EX.length) { endPind(); return; }
+  const q = PIND_EX[pindIdx];
+  document.getElementById('pind-prog').textContent = (pindIdx+1) + ' / ' + PIND_EX.length;
+
+  const rendered = q.s.replace('___',
+    '<input class="prep-inline" id="pindi0" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:60px">');
+
+  document.getElementById('pind-sentence').innerHTML =
+    '<div style="font-size:13px;color:var(--g4);margin-bottom:8px;font-style:italic;">' + q.orig + '</div>' +
+    '<div style="font-size:17px;">' + rendered + '</div>';
+
+  document.querySelectorAll('#pind-sentence input').forEach(inp => {
+    inp.addEventListener('keydown', function(e){ if(e.key==='Enter') checkPind(); });
+  });
+
+  document.getElementById('pind-fb').className = 'qfb';
+  document.getElementById('pind-next').className = 'btn-next';
+
+  if(!document.getElementById('pind-checkBtn')) {
+    const btn = document.createElement('button');
+    btn.id = 'pind-checkBtn'; btn.className = 'btn-chk';
+    btn.style.width = '100%'; btn.style.marginBottom = '12px';
+    btn.textContent = 'Prüfen'; btn.onclick = checkPind;
+    document.getElementById('pind-fb').before(btn);
+  }
+  document.getElementById('pind-checkBtn').style.display = '';
+  const f = document.getElementById('pindi0');
+  if(f) f.focus();
+}
+
+function checkPind() {
+  const q = PIND_EX[pindIdx];
+  const inp = document.getElementById('pindi0');
+  if(!inp) return;
+  const val = inp.value.trim().toLowerCase();
+  const ok = val === q.ans.toLowerCase();
+  inp.className = 'prep-inline ' + (ok ? 'ok' : 'err');
+  inp.disabled = true;
+  const fb = document.getElementById('pind-fb');
+  if(ok) {
+    fb.textContent = '✓ Richtig!'; fb.className = 'qfb on ok'; pindOk++;
+  } else {
+    fb.textContent = '✗ Richtig: ' + q.ans; fb.className = 'qfb on err'; pindWrong++;
+  }
+  document.getElementById('pind-next').className = 'btn-next on';
+  document.getElementById('pind-checkBtn').style.display = 'none';
+}
+
+function nextPind() {
+  pindIdx++;
+  showPind();
+}
+
+function endPind() {
+  const total = pindOk + pindWrong;
+  const pct = total > 0 ? Math.round(pindOk/total*100) : 0;
+  document.getElementById('pind-sentence').innerHTML =
+    '<div style="text-align:center;padding:1rem 0;">' +
+    '<div class="score-circle" style="margin:0 auto 1rem;">' + pct + '%</div>' +
+    '<div style="font-size:14px;color:var(--g4);">' + pindOk + ' richtig / ' + pindWrong + ' falsch</div>' +
+    '<button class="btn-prim" style="margin-top:1.5rem;" onclick="startPind()">Nochmals</button>' +
+    '</div>';
+  document.getElementById('pind-prog').textContent = '';
+  document.getElementById('pind-fb').className = 'qfb';
+  document.getElementById('pind-next').className = 'btn-next';
+  if(document.getElementById('pind-checkBtn')) document.getElementById('pind-checkBtn').style.display = 'none';
 }
 
 </script>
