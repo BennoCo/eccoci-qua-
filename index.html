@@ -317,8 +317,111 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
       <div class="hc-pills"><span class="pill">4 Übungen</span><span class="pill">Lückentexte</span></div>
       <div class="hc-arr">→</div>
     </div>
+    <div class="hc" onclick="go('storie')" style="margin-top:14px;">
+      <h2>Le storie</h2>
+      <p>Lies kurze italienische Geschichten — tippe auf markierte Wörter für die deutsche Übersetzung.</p>
+      <div class="hc-pills"><span class="pill">5 Geschichten</span><span class="pill">Tippen zum Übersetzen</span></div>
+      <div class="hc-arr">→</div>
+    </div>
   </div>
 </div>
+
+<!-- STORIE -->
+<div id="s-storie" class="section">
+  <style>
+    .storia-card{background:var(--white);border-radius:var(--r);padding:2rem;border:2px solid var(--black);max-width:720px;}
+    .storia-card h3{font-family:'ClassyVogue',sans-serif;font-size:20px;letter-spacing:0.02em;margin:1.5rem 0 .75rem;}
+    .storia-card h3:first-child{margin-top:0;}
+    .storia-card p{font-family:'Garet',sans-serif;font-size:15px;line-height:1.75;color:var(--black);margin-bottom:1rem;}
+    .storia-hint{font-family:'Garet',sans-serif;font-size:12px;color:var(--g4);margin-bottom:1.25rem;}
+    .gl{cursor:pointer;border-bottom:2px dotted var(--g3);position:relative;white-space:nowrap;}
+    .gl:hover{border-bottom-color:var(--black);}
+    .gl.revealed{border-bottom-style:solid;border-bottom-color:var(--black);}
+    .gl.revealed::after{content:attr(data-de);position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:6px;background:var(--black);color:#fff;font-size:11px;line-height:1.4;padding:4px 9px;border-radius:8px;white-space:normal;max-width:220px;width:max-content;z-index:20;box-shadow:var(--sh);}
+    .storie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+    .storia-item{background:var(--white);border:2px solid var(--black);border-radius:var(--r);padding:1.1rem 1.4rem;cursor:pointer;display:flex;align-items:center;gap:14px;transition:transform .15s;}
+    .storia-item:hover{transform:translateY(-2px);}
+    .si-ico{font-size:26px;flex-shrink:0;}
+    .si-txt{flex:1;min-width:0;}
+    .si-sub{font-size:10px;color:var(--g4);font-family:'Garet',sans-serif;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px;}
+    .si-title{font-family:'ClassyVogue',sans-serif;font-size:16px;letter-spacing:0.02em;line-height:1.25;}
+    .si-arr{font-size:15px;font-weight:700;flex-shrink:0;}
+  </style>
+  <div class="sec-h">
+    <h2>Le storie</h2>
+    <button class="btn-back" onclick="go('home')">← Indietro</button>
+  </div>
+  <div id="storieList" class="storie-grid"></div>
+  <div id="storiaDetail" style="display:none;">
+    <button class="btn-back" onclick="closeStoria()" style="margin-bottom:1rem;">← Storie</button>
+    <div class="storia-card" id="storiaBody"></div>
+  </div>
+</div>
+<script>
+const STORIE=[
+  {id:'sicilia', icon:'🍽️', sub:'', title:'La Sicilia e i suoi piatti', blocks:[
+    {t:'h3', h:`La Sicilia e i suoi piatti`},
+    {t:'p', h:`Archestrato di Gela, poeta greco del IV secolo a.C., racconta i <span class="gl" data-de="die Freuden / der Genuss">piaceri</span> della cucina siciliana e descrive la bontà del <span class="gl" data-de="der Thunfisch">tonno</span> <span class="gl" data-de="frisch gefangen">appena pescato</span> condito con la tipica salsa <span class="gl" data-de="Salmoriglio (Kräuter-Öl-Zitronen-Sauce)">salmoriglio</span>, a dimostrare che le ricette dell'isola <span class="gl" data-de="verzaubern">incantano</span> i <span class="gl" data-de="die Gaumen">palati</span> da <span class="gl" data-de="Jahrtausende">millenni</span>. Come se non bastasse, ogni <span class="gl" data-de="Herrschaft">dominazione</span> <span class="gl" data-de="bereicherte">arricchì</span> di nuovi ingredienti e sapori i piatti già <span class="gl" data-de="köstlich">squisiti</span> della tradizione. Basta pensare agli arabi, che oltre a rivoluzionare il gusto con il loro amore per i <span class="gl" data-de="süß-saure Kontraste">contrasti agrodolci</span>, i gelati e le <span class="gl" data-de="Granita (sizilianisches Wassereis)">granite</span>, la passione per una <span class="gl" data-de="feine Konditorkunst">pasticceria raffinata</span>, portarono nell'isola ogni genere di frutta e ortaggi, dagli <span class="gl" data-de="Zitrusfrüchte">agrumi</span> ai meloni, dai <span class="gl" data-de="Artischocken">carciofi</span> agli spinaci, <span class="gl" data-de="Maulbeeren">gelsi</span> e <span class="gl" data-de="Johannisbrot">carrube</span>, per citarne solo alcuni. I Borboni e i francesi arrivarono in Sicilia con un piccolo <span class="gl" data-de="Heer">esercito</span> di <span class="gl" data-de="Hofköche (aus dem Französischen 'monsieur')">monsù</span>, <span class="gl" data-de="erfahren, geübt">provetti</span> cuochi di corte imbattibili nel cucinare <span class="gl" data-de="Wildbret">cacciagione</span>, torte e <span class="gl" data-de="Timbale (Nudel-/Reisauflauf)">timballi</span>. I monsù non solo cambiarono i sapori a cui era <span class="gl" data-de="gewöhnt (an etwas)">avvezza</span> la <span class="gl" data-de="der Adel">nobiltà</span> siciliana, ma inconsapevolmente trasformarono anche quelli del popolo, perché i <span class="gl" data-de="die Bauern">contadini</span> e i <span class="gl" data-de="die Fischer">pescatori</span>, con grande fantasia, <span class="gl" data-de="passten neu an">riadattavano</span> le ricette dei ricchi al loro modo di mangiare.`},
+    {t:'h3', h:`Caponata: un contorno agrodolce`},
+    {t:'p', h:`La caponata è il più noto <span class="gl" data-de="die Beilage">contorno</span> siciliano, a base di <span class="gl" data-de="Auberginen">melanzane</span>, <span class="gl" data-de="der Stangensellerie">sedano</span>, pomodori, <span class="gl" data-de="Rosinen">uvetta</span>, <span class="gl" data-de="Pinienkerne">pinoli</span> e basilico. L'origine del nome non è nota. Secondo alcuni potrebbe derivare dal greco koptos, che significa "tagliato", forse perché la ricetta prevede l'uso di verdure diverse <span class="gl" data-de="geschnitten">tagliate</span> in modo da avere le stesse dimensioni. Per altri caponata deriva invece dalla parola latina caupona, l'<span class="gl" data-de="die Wirtschaft / Schenke">osteria</span> dove i marinai stanchi andavano a bere un bicchiere di vino e a mangiare un piatto veloce; altri pensano al <span class="gl" data-de="Knurrhahn (ein Fisch)">capone</span>, un pesce pregiato che veniva condito con una salsa agrodolce. Di fatto, la caponata era molto probabilmente un piatto a base di pesce trasformato con fantasia dal popolo, che sostituì il <span class="gl" data-de="unerschwinglich">proibitivo</span> pesce pregiato con la più <span class="gl" data-de="günstig">economica</span> melanzana. La fusione di sapori diversi, come l'<span class="gl" data-de="der Essig">aceto</span> e lo zucchero, il sale, il <span class="gl" data-de="der Pfeffer">pepe</span>, l'uvetta e le verdure, ha reso questa <span class="gl" data-de="das Gericht (Speise)">pietanza</span> <span class="gl" data-de="unvergesslich">indimenticabile</span>.`},
+    {t:'h3', h:`Cannoli: dulcis in fundo`},
+    {t:'p', h:`I cannoli sono tipici di Caltanissetta, dove nacquero, per diventare solo in seguito i dolci siciliani per antonomasia, preparati in maniera ghiotta a Palermo. Il nome deriva dalla canna attorno alla quale viene arrotolata la pasta prima di essere fritta nello <span class="gl" data-de="Schweineschmalz">strutto</span>. I cannoli vengono <span class="gl" data-de="gefüllt">farciti</span> poi con <span class="gl" data-de="Ricotta (Frischkäse)">ricotta</span> freschissima, rigorosamente <span class="gl" data-de="vom Schaf">di pecora</span>, <span class="gl" data-de="gesiebt">setacciata</span>, <span class="gl" data-de="gezuckert">zuccherata</span> e arricchita, a seconda dei gusti, con pezzi di cioccolato, <span class="gl" data-de="kandierte Früchte">canditi</span>, <span class="gl" data-de="Krokant / gehackte Stücke">granella</span> di <span class="gl" data-de="Pistazien">pistacchi</span> o di <span class="gl" data-de="Haselnüsse">nocciole</span>.`},
+    {t:'p', h:`Anche la storia dei cannoli è antichissima e secondo i più <span class="gl" data-de="boshaft, spitzbübisch">maliziosi</span> la loro <span class="gl" data-de="phallische Form">forma fallica</span> ricorda <span class="gl" data-de="archaisch">arcaiche</span> <span class="gl" data-de="Karnevalsfeste">feste carnascialesche</span>. Nel suo libro Siciliani a tavola, Alberto Denti di Pirajno racconta che quando nel 70 a.C. si recò a visitare la Sicilia, Cicerone gustò e descrisse un "tubo di farina ripieno di una dolcissima crema di latte". Sicuramente la ricetta subì un'evoluzione con gli arabi ai tempi in cui Caltanissetta si chiamava Qal'at an-nisā'. Furono le donne dell'<span class="gl" data-de="der Harem">harem</span> ad aggiungere zucchero e <span class="gl" data-de="kandierte Früchte">canditi</span> alla ricetta originale.`},
+  ]},
+  {id:'cafoni', icon:'🏙️', sub:'Scala B, interno 5', title:'Lotta ai cafoni nelle città', blocks:[
+    {t:'h3', h:`<span class="gl" data-de="Kampf">Lotta</span> ai <span class="gl" data-de="Rüpel, Banausen">cafoni</span> nelle città`},
+    {t:'p', h:`In molte città italiane oggi ci sono regole contro i <span class="gl" data-de="unhöflichem, ungezogenem Verhalten">comportamenti maleducati</span>. A Salerno il <span class="gl" data-de="Bürgermeister">sindaco</span> Vincenzo De Luca vuole una città più pulita e più rispettosa. Per questo chiede alle persone di non fare troppo rumore e di rispettare gli spazi pubblici. Chi non rispetta queste regole rischia una <span class="gl" data-de="Geldstrafe">multa</span>. Anche in altre città sono valide regole simili. Per esempio in alcune <span class="gl" data-de="Badeort">località di mare</span> non si può camminare lontano dalla spiaggia in bikini o a <span class="gl" data-de="nackter Oberkörper">torso nudo</span>. Non è permesso neanche mangiare sui <span class="gl" data-de="Stufen">gradini</span> delle chiese o vicino ai monumenti. Alcuni turisti fanno anche alcuni <span class="gl" data-de="Schäden">danni</span>: una persona ha scritto il suo nome sul Colosseo, a Verona una coppia ha rotto un'opera d'arte e un uomo è sceso con un'auto sulla <span class="gl" data-de="Spanische Treppe">scalinata di Trinità dei Monti</span> a Roma.`},
+  ]},
+  {id:'lungomare', icon:'🌊', sub:'Una strada, una storia', title:'Lungomare Falcomatà', blocks:[
+    {t:'h3', h:`Lungomare Falcomatà`},
+    {t:'p', h:`A Reggio Calabria c'è il <span class="gl" data-de="Strandpromenade Falcomatà">Lungomare Falcomatà</span>, un luogo molto amato. Il nome è legato a Italo Falcomatà, <span class="gl" data-de="Bürgermeister">sindaco</span> della città dal 1993 al 2001. In quegli anni Reggio vive un periodo di <span class="gl" data-de="Wiedergeburt">rinascita</span> grazie alla cultura e alla <span class="gl" data-de="Rechtsstaatlichkeit">legalità</span>.`},
+    {t:'p', h:`Oggi il lungomare è pieno di vita. La mattina molte persone corrono, il pomeriggio le coppie <span class="gl" data-de="spazieren">passeggiano</span> e guardano il <span class="gl" data-de="Aussicht">panorama</span>, mentre la sera arrivano soprattutto i giovani. Qui si trovano spiagge, locali e l'Arena dello <span class="gl" data-de="Meerenge (Straße von Messina)">Stretto</span>, dove si fanno <span class="gl" data-de="Veranstaltungen, Aufführungen">spettacoli</span> e festival.`},
+    {t:'p', h:`Il lungomare è anche un museo <span class="gl" data-de="im Freien">all'aperto</span>. Ci sono <span class="gl" data-de="(Kunst)werke">opere</span> moderne, statue e resti della storia antica della città. Tra le opere più particolari ci sono le grandi statue di Rabarama e una <span class="gl" data-de="Bauwerk, Struktur">struttura</span> di 46 <span class="gl" data-de="Säulen">colonne</span> in metallo.`},
+  ]},
+  {id:'temi', icon:'💬', sub:'Stile libero', title:'I temi che dividono gli italiani', blocks:[
+    {t:'h3', h:`I temi che dividono gli italiani`},
+    {t:'p', h:`In Italia oggi ci sono diversi temi che dividono molto le persone. Uno è la <span class="gl" data-de="Jagd">caccia</span>. Chi la <span class="gl" data-de="verteidigt">difende</span> la considera una tradizione importante e pensa che possa aiutare gli <span class="gl" data-de="Landwirte">agricoltori</span> contro gli <span class="gl" data-de="Wildtiere">animali selvatici</span>. Chi è contrario, invece, pensa che sia pericolosa e che debba essere limitata.`},
+    {t:'p', h:`Anche l'<span class="gl" data-de="Windenergie">energia eolica</span> crea discussioni. Le pale producono energia senza CO2 e usano una fonte che non finisce, il <span class="gl" data-de="Wind">vento</span>. Ma gli impianti costano molto e possono creare rumore e problemi per il <span class="gl" data-de="Landschaft">paesaggio</span> e per alcuni animali.`},
+    {t:'p', h:`Un altro tema difficile è il <span class="gl" data-de="Lebensende">fine vita</span>. Alcune persone chiedono una legge sul suicidio assistito per aiutare i malati con <span class="gl" data-de="Leiden">sofferenze</span> molto forti e senza possibilità di <span class="gl" data-de="Heilung">guarigione</span>. Per altre persone la vita deve essere sempre protetta. Secondo loro, lo Stato deve aiutare soprattutto con le <span class="gl" data-de="Behandlung, Therapie">cure</span> per il dolore.`},
+    {t:'p', h:`Infine, si discute molto anche delle spiagge. In Italia molte spiagge sono <span class="gl" data-de="betrieben">gestite</span> da piccole <span class="gl" data-de="Unternehmen">imprese</span> familiari. Alcuni vogliono più concorrenza e nuove <span class="gl" data-de="Ausschreibungen">gare</span> per le <span class="gl" data-de="Konzessionen, Genehmigungen">concessioni</span>. Per altri, invece, le piccole imprese rischiano di perdere il loro lavoro. Sono quattro temi diversi, ma tutti mostrano quanto è difficile trovare un accordo.`},
+  ]},
+  {id:'fedesarda', icon:'💍', sub:'Cose', title:'La fede sarda', blocks:[
+    {t:'h3', h:`La fede sarda`},
+    {t:'p', h:`La “<span class="gl" data-de="sardischer Ehering">fede sarda</span>” è un <span class="gl" data-de="Ring">anello</span> molto speciale fatto in Sardegna. L'uomo regala questo anello alla donna che ama quando la <span class="gl" data-de="hält um ihre Hand an">chiede in moglie</span>. È un gioiello tradizionale fatto in <span class="gl" data-de="Goldfiligran">filigrana d'oro</span> e con tante piccole <span class="gl" data-de="Kugeln">sfere</span> che ricordano i <span class="gl" data-de="Weizenkörner">chicchi di grano</span>, simbolo di <span class="gl" data-de="Überfluss">abbondanza</span> e <span class="gl" data-de="Wohlstand">prosperità</span>. La fede sarda ha una storia molto antica. Secondo una leggenda, alcune janas, le <span class="gl" data-de="Feen">fate</span> buone dell'isola, creano un anello magico per aiutare un giovane innamorato. Oggi la fede sarda è ancora uno dei gioielli più famosi e amati della tradizione.`},
+  ]},
+];
+
+(function(){
+  const g=document.getElementById('storieList');
+  STORIE.forEach(s=>{
+    const d=document.createElement('div');
+    d.className='storia-item';
+    d.innerHTML=`<div class="si-ico">${s.icon}</div><div class="si-txt">${s.sub?`<div class="si-sub">${s.sub}</div>`:''}<div class="si-title">${s.title}</div></div><div class="si-arr">→</div>`;
+    d.onclick=()=>openStoria(s);
+    g.appendChild(d);
+  });
+})();
+
+function openStoria(s){
+  const body=document.getElementById('storiaBody');
+  let html='<div class="storia-hint">Tippe auf die unterstrichenen Wörter für die deutsche Übersetzung.</div>';
+  s.blocks.forEach(b=>{
+    html += (b.t==='h3') ? `<h3>${b.h}</h3>` : `<p>${b.h}</p>`;
+  });
+  body.innerHTML=html;
+  document.getElementById('storieList').style.display='none';
+  document.getElementById('storiaDetail').style.display='block';
+  window.scrollTo(0,0);
+}
+function closeStoria(){
+  document.getElementById('storiaDetail').style.display='none';
+  document.getElementById('storieList').style.display='grid';
+}
+document.getElementById('storiaDetail').addEventListener('click', function(e){
+  const t=e.target.closest('.gl');
+  if(t) t.classList.toggle('revealed');
+});
+</script>
 
 <!-- VOCAB -->
 <div id="s-vocab" class="section">
@@ -1491,22 +1594,100 @@ const T=[
     {de:'der Halbzeitpfiff',it:"il fischio di fine primo tempo",ex:"Il fischio di fine primo tempo ha fermato il gioco."},
     {de:'der Abpfiff',it:"il fischio finale",ex:"Al fischio finale tutti hanno esultato."},
   ]},
-  {id:'bagno',icon:'🛁',name:'Il bagno',words:[
-    {de:'die Zahnbürste',it:'lo spazzolino',ex:"Metto il dentifricio sullo spazzolino."},
-    {de:'die Zahnbürsten (pl)',it:'gli spazzolini',ex:"Compriamo due spazzolini nuovi."},
-    {de:'die Zahnpasta',it:'il dentifricio',ex:"Il dentifricio è quasi finito."},
-    {de:'die Haarbürste',it:'la spazzola per i capelli',ex:"Uso la spazzola per i capelli ogni mattina."},
-    {de:'die Haarbürsten (pl)',it:'le spazzole per i capelli',ex:"Le spazzole per i capelli sono nell'armadietto."},
-    {de:'der Kamm',it:'il pettine',ex:"Ho perso il pettine in bagno."},
-    {de:'die Kämme (pl)',it:'i pettini',ex:"I pettini sono sul lavandino."},
-    {de:'die Seife',it:'il sapone',ex:"Il sapone profuma di lavanda."},
-    {de:'die Seifen (pl)',it:'i saponi',ex:"I saponi sono fatti a mano."},
-    {de:'das Handtuch',it:"l'asciugamano",ex:"L'asciugamano è appeso al gancio."},
-    {de:'die Handtücher (pl)',it:'gli asciugamani',ex:"Gli asciugamani puliti sono nell'armadio."},
-    {de:'das Waschbecken',it:'il lavandino',ex:"Il lavandino è pieno d'acqua."},
-    {de:'die Badewanne',it:'la vasca da bagno',ex:"Faccio il bagno nella vasca da bagno."},
-    {de:'der Spiegel',it:'lo specchio',ex:"Mi guardo allo specchio prima di uscire."},
-    {de:'im Bad gibt es eine Badewanne, einen Spiegel und ein Waschbecken',it:"in bagno c'è una vasca, uno specchio e un lavandino",ex:"In bagno c'è una vasca, uno specchio e un lavandino."},
+  {id:'oggetti_quaderno',icon:'📓',name:'Dal quaderno: oggetti',words:[
+    {de:'die Trinkflasche / Feldflasche',it:'la borraccia',ex:"Ho riempito la borraccia prima di partire per l'escursione."},
+    {de:'der Flaschenhals / Engpass',it:'il collo di bottiglia',ex:"Il traffico si blocca sempre a quel collo di bottiglia."},
+    {de:'die Batterie / der Stapel',it:'la pila',ex:"Devo cambiare la pila del telecomando."},
+    {de:'die Schere',it:'le forbici',ex:"Passami le forbici per tagliare il nastro."},
+    {de:'Brille wie Flaschenböden (dicke Brille)',it:'occhiali come i fondi di bottiglia',ex:"Porta occhiali spessi come i fondi di bottiglia."},
+    {de:'der Hintern / das Gesäß',it:'il fondoschiena',ex:"Mi fa male il fondoschiena dopo la lunga camminata."},
+    {de:'das Tagebuch',it:'il diario',ex:"Scrivo ogni sera qualche riga sul mio diario."},
+    {de:'die Stiftkappe',it:'il tappo della penna',ex:"Ho perso il tappo della penna."},
+    {de:'der Stöpsel / Verschluss',it:'il tappo',ex:"Metti il tappo sulla bottiglia."},
+    {de:'der Terminkalender',it:"l'agenda",ex:"Segno tutti gli appuntamenti nell'agenda."},
+    {de:'der Leineneinband',it:'la copertina di lino',ex:"Il quaderno ha una copertina di lino molto elegante."},
+    {de:'der Einband / Umschlag',it:'la copertina',ex:"La copertina del libro è rovinata."},
+    {de:'die Taschentücher',it:'i fazzoletti',ex:"Ho sempre dei fazzoletti in tasca."},
+    {de:'Küchenpapier',it:'la carta da cucina',ex:"Passa un po' di carta da cucina per pulire il tavolo."},
+    {de:'Geschenkpapier',it:'la carta da regalo',ex:"Ho comprato della carta da regalo colorata."},
+    {de:'der Filzstift',it:'il pennarello',ex:"Ho disegnato con il pennarello nero."},
+    {de:'der Deckel / das Gedeck',it:'il coperto',ex:"Al ristorante il coperto costa due euro."},
+  ]},
+  {id:'espressioni_quaderno',icon:'💬',name:'Dal quaderno: espressioni',words:[
+    {de:'eine Andeutung',it:'un cenno',ex:"Mi ha fatto un cenno con la mano."},
+    {de:'Übernachtung',it:'il pernottamento',ex:"Il pernottamento in albergo è incluso nel prezzo."},
+    {de:'abbauen',it:'smontare',ex:"Dobbiamo smontare la tenda prima di partire."},
+    {de:'ich weiß noch nicht, wo',it:'non so ancora dove',ex:"Non so ancora dove andremo in vacanza."},
+    {de:'es ist machbar',it:'è fattibile',ex:"Il progetto è fattibile entro fine anno."},
+    {de:'essbar',it:'edibile',ex:"Questa pianta non è edibile."},
+    {de:'bebaubar',it:'edificabile',ex:"Il terreno è edificabile secondo il piano regolatore."},
+    {de:'umwandelbar',it:'trasformabile',ex:"Il divano è trasformabile in letto."},
+    {de:'unerreichbar',it:'irraggiungibile',ex:"La vetta sembrava irraggiungibile."},
+    {de:'Tausende von Jahren',it:'migliaia di anni',ex:"Questi reperti risalgono a migliaia di anni fa."},
+    {de:'Hunderte',it:'centinaia',ex:"Centinaia di persone hanno partecipato alla manifestazione."},
+    {de:'Dutzend',it:'dozzine',ex:"Ha comprato dozzine di uova per la festa."},
+    {de:'Millionen',it:'milioni',ex:"L'azienda ha investito milioni di franchi."},
+    {de:'größenwahnsinnig',it:'megalomane',ex:"Il suo progetto è un po' megalomane."},
+    {de:'verdienen',it:'meritare',ex:"Devi meritare la fiducia dei clienti."},
+    {de:'die Stufen',it:'i gradini',ex:"Attento ai gradini, sono scivolosi."},
+    {de:'Terrassenstufen',it:'i gradoni',ex:"Il sentiero sale con grandi gradoni di pietra."},
+    {de:'alle zwei Tage',it:'ogni due giorni',ex:"Innaffio le piante ogni due giorni."},
+    {de:'jeden zweiten Tag',it:'un giorno sì, un giorno no',ex:"Vado in palestra un giorno sì, un giorno no."},
+    {de:'Visitenkarte',it:'il biglietto da visita',ex:"Mi ha dato il suo biglietto da visita."},
+    {de:'die Schritte',it:'i passi',ex:"Ho contato i passi fino alla stazione."},
+    {de:'Schritt für Schritt',it:'passo dopo passo',ex:"Impariamo la lingua passo dopo passo."},
+    {de:'der Stau / Engpass',it:"l'imbottigliamento",ex:"C'è un imbottigliamento sull'autostrada."},
+    {de:'einwickeln / einpacken',it:'incartare',ex:"Puoi incartare il regalo per favore?"},
+    {de:'auf Grundlage von',it:'sulla base di',ex:"La decisione è stata presa sulla base di nuovi dati."},
+    {de:'der Schwindel / Betrug',it:"l'imbroglio",ex:"Quella storia era solo un imbroglio."},
+    {de:'die Ausnahme',it:"l'eccezione",ex:"Facciamo un'eccezione solo questa volta."},
+    {de:'schicken / senden',it:'mandare',ex:"Devo mandare l'email entro oggi."},
+    {de:'der Verkäufer',it:'il venditore',ex:"Il venditore mi ha spiegato tutti i dettagli."},
+    {de:'das Missverständnis',it:'il malinteso',ex:"È stato solo un malinteso, ci siamo chiariti."},
+    {de:'außerdem / ferner',it:'inoltre',ex:"Inoltre, dobbiamo controllare anche i costi."},
+    {de:'der Sektor / Bereich',it:'il settore',ex:"Lavora nel settore immobiliare."},
+    {de:'die Folge / Konsequenz',it:'la conseguenza',ex:"Ogni scelta ha una conseguenza."},
+  ]},
+  {id:'finanze',icon:'💰',name:'Le finanze',words:[
+    {de:'das Geld',it:'i soldi',ex:"Non ho soldi con me oggi."},
+    {de:'das Konto',it:'il conto',ex:"Ho aperto un nuovo conto in banca."},
+    {de:'das Bankkonto',it:'il conto bancario',ex:"Il mio conto bancario è in Svizzera."},
+    {de:'das Sparkonto',it:'il conto di risparmio',ex:"Verso ogni mese sul conto di risparmio."},
+    {de:'die Bank',it:'la banca',ex:"La banca chiude alle diciassette."},
+    {de:'der Kredit / das Darlehen',it:'il prestito',ex:"Ha chiesto un prestito per l'auto."},
+    {de:'die Hypothek',it:"l'ipoteca",ex:"Abbiamo acceso un'ipoteca per la casa."},
+    {de:'der Zins / die Zinsen',it:"l'interesse / gli interessi",ex:"Gli interessi sul mutuo sono aumentati."},
+    {de:'der Zinssatz',it:"il tasso d'interesse",ex:"Il tasso d'interesse è salito quest'anno."},
+    {de:'die Rechnung',it:'la fattura',ex:"Devo pagare questa fattura entro venerdì."},
+    {de:'die Steuer',it:"la tassa / l'imposta",ex:"Le tasse sono aumentate quest'anno."},
+    {de:'die Mehrwertsteuer',it:"l'IVA",ex:"Il prezzo è indicato senza IVA."},
+    {de:'das Einkommen',it:'il reddito',ex:"Il reddito familiare è aumentato."},
+    {de:'das Gehalt',it:'lo stipendio',ex:"Ricevo lo stipendio a fine mese."},
+    {de:'das Budget',it:'il budget / il bilancio',ex:"Dobbiamo rispettare il budget del progetto."},
+    {de:'die Ausgaben',it:'le spese',ex:"Le spese mensili sono troppo alte."},
+    {de:'die Ersparnisse',it:'i risparmi',ex:"Ha usato i risparmi per il viaggio."},
+    {de:'investieren',it:'investire',ex:"Vuole investire in borsa."},
+    {de:'die Investition',it:"l'investimento",ex:"È stato un investimento molto redditizio."},
+    {de:'die Aktie',it:"l'azione",ex:"Ha comprato azioni di quella società."},
+    {de:'der Aktienmarkt',it:'il mercato azionario',ex:"Il mercato azionario è instabile oggi."},
+    {de:'die Börse',it:'la borsa',ex:"La borsa di Zurigo apre alle nove."},
+    {de:'der Kurs (Aktienkurs)',it:'la quotazione',ex:"La quotazione del titolo è salita."},
+    {de:'die Rendite',it:'il rendimento',ex:"Il fondo ha un buon rendimento annuo."},
+    {de:'das Risiko',it:'il rischio',ex:"Investire comporta sempre un rischio."},
+    {de:'der Gewinn',it:'il guadagno / il profitto',ex:"L'azienda ha registrato un buon guadagno."},
+    {de:'der Verlust',it:'la perdita',ex:"Ha subito una grande perdita in borsa."},
+    {de:'die Schulden',it:'i debiti',ex:"Ha molti debiti da ripagare."},
+    {de:'verschuldet sein',it:'essere indebitato',ex:"È indebitato fino al collo."},
+    {de:'sparen',it:'risparmiare',ex:"Cerchiamo di risparmiare ogni mese."},
+    {de:'ausgeben (Geld)',it:'spendere',ex:"Spende troppo in vestiti."},
+    {de:'bezahlen',it:'pagare',ex:"Posso pagare con la carta?"},
+    {de:'die Zahlung',it:'il pagamento',ex:"Il pagamento è dovuto entro fine mese."},
+    {de:'die Überweisung',it:'il bonifico',ex:"Ho fatto un bonifico stamattina."},
+    {de:'die Kreditkarte',it:'la carta di credito',ex:"Ho pagato con la carta di credito."},
+    {de:'der Geldautomat',it:'il bancomat',ex:"Devo prelevare al bancomat."},
+    {de:'die Versicherung',it:"l'assicurazione",ex:"L'assicurazione copre i danni."},
+    {de:'der Wert',it:'il valore',ex:"Il valore dell'immobile è aumentato."},
+    {de:'die Inflation',it:"l'inflazione",ex:"L'inflazione ha fatto salire i prezzi."},
   ]},
 ];
 
@@ -2330,6 +2511,7 @@ const PIND_EX = [
   {orig:"Sei il mio migliore amico.", s:"Sei il mio migliore amico, ___ voglio tanto bene!", ans:"ti"},
   {orig:"Che ne pensi di andare al parco?", s:"Non ___ sembra una buona idea, sta piovendo!", ans:"mi"},
   {orig:"Ho visto tuo cugino.", s:"Ho visto tuo cugino e ___ ho chiesto come sta sua moglie.", ans:"gli"},
+
 ];
 
 let pindIdx = 0, pindOk = 0, pindWrong = 0;
