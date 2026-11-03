@@ -89,6 +89,7 @@ main{max-width:880px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
 .cs{width:100%;max-width:500px;height:270px;perspective:1200px;cursor:pointer;}
 .ci{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);}
 .ci.flip{transform:rotateY(180deg);}
+.ci.flip2{transform:rotateY(360deg);}
 .cf{position:absolute;width:100%;height:100%;backface-visibility:hidden;background:var(--white);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;border:2px solid var(--black);box-shadow:none;}
 .cf.back{transform:rotateY(180deg);background:var(--black);color:#fff;}
 .cl{font-family:'Garet',sans-serif;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);margin-bottom:12px;}
@@ -456,8 +457,8 @@ document.getElementById('storiaDetail').addEventListener('click', function(e){
     </div>
     <div class="cs" onclick="flipC()">
       <div class="ci" id="ci">
-        <div class="cf front"><div class="cl">Deutsch</div><div class="cw" id="cfr">—</div></div>
-        <div class="cf back"><div class="cl">Italiano</div><div class="cw" id="cbk">—</div><div class="cx" id="cex"></div></div>
+        <div class="cf front"><div class="cl" id="cfl">Deutsch</div><div class="cw" id="cfr">—</div><div class="cx" id="cexf" style="color:var(--g4)"></div></div>
+        <div class="cf back"><div class="cl" id="cbl">Italiano</div><div class="cw" id="cbk">—</div><div class="cx" id="cex"></div></div>
       </div>
     </div>
     <div class="fhint" id="fhint">Klicken zum Umdrehen</div>
@@ -1689,6 +1690,38 @@ const T=[
     {de:'der Wert',it:'il valore',ex:"Il valore dell'immobile è aumentato."},
     {de:'die Inflation',it:"l'inflazione",ex:"L'inflazione ha fatto salire i prezzi."},
   ]},
+  {id:'passato_irr',icon:'⏪',name:'Passato prossimo irregolare',words:[
+    {de:"machen",inf:"fare",it:"ha fatto",ex:"Ieri ho fatto una lunga passeggiata."},
+    {de:"sagen",inf:"dire",it:"ha detto",ex:"Mi ha detto la verità."},
+    {de:"lesen",inf:"leggere",it:"ha letto",ex:"Ho letto un libro molto interessante."},
+    {de:"schreiben",inf:"scrivere",it:"ha scritto",ex:"Ho scritto una lettera a mia nonna."},
+    {de:"brechen / kaputt machen",inf:"rompere",it:"ha rotto",ex:"Il bambino ha rotto un bicchiere."},
+    {de:"setzen / legen / stellen",inf:"mettere",it:"ha messo",ex:"Ho messo le chiavi sul tavolo."},
+    {de:"passieren / geschehen",inf:"succedere",it:"è successo/a",ex:"Che cosa è successo ieri sera?"},
+    {de:"fragen",inf:"chiedere",it:"ha chiesto",ex:"Ho chiesto informazioni alla stazione."},
+    {de:"antworten",inf:"rispondere",it:"ha risposto",ex:"Non ha risposto alla mia email."},
+    {de:"sehen",inf:"vedere",it:"ha visto",ex:"Abbiamo visto un bel film."},
+    {de:"bleiben",inf:"rimanere",it:"è rimasto/a",ex:"Siamo rimasti a casa tutto il giorno."},
+    {de:"nehmen",inf:"prendere",it:"ha preso",ex:"Ho preso il treno delle otto."},
+    {de:"anzünden / einschalten",inf:"accendere",it:"ha acceso",ex:"Ho acceso la luce in cucina."},
+    {de:"hinuntergehen / aussteigen",inf:"scendere",it:"è sceso/a, ha sceso",ex:"Sono sceso dall'autobus. Ho sceso le scale."},
+    {de:"entscheiden",inf:"decidere",it:"ha deciso",ex:"Abbiamo deciso di partire domani."},
+    {de:"töten",inf:"uccidere",it:"ha ucciso",ex:"Il gatto ha ucciso un topo."},
+    {de:"lachen",inf:"ridere",it:"ha riso",ex:"Abbiamo riso tutta la sera."},
+    {de:"schliessen",inf:"chiudere",it:"ha chiuso",ex:"Hai chiuso la porta?"},
+    {de:"verlieren",inf:"perdere",it:"ha perso",ex:"Ho perso le chiavi di casa."},
+    {de:"laufen / rennen",inf:"correre",it:"è corso/a, ha corso",ex:"Sono corso a casa. Ho corso per un'ora."},
+    {de:"öffnen",inf:"aprire",it:"ha aperto",ex:"Ha aperto la finestra."},
+    {de:"sterben",inf:"morire",it:"è morto/a",ex:"Il nonno è morto l'anno scorso."},
+    {de:"anbieten",inf:"offrire",it:"ha offerto",ex:"Mi ha offerto un caffè."},
+    {de:"entdecken",inf:"scoprire",it:"ha scoperto",ex:"Ho scoperto un bel ristorante."},
+    {de:"ausschalten / löschen",inf:"spegnere",it:"ha spento",ex:"Hai spento il computer?"},
+    {de:"gewinnen",inf:"vincere",it:"ha vinto",ex:"La nostra squadra ha vinto la partita."},
+    {de:"sein",inf:"essere",it:"è stato/a",ex:"Sono stata in Italia l'estate scorsa."},
+    {de:"kommen",inf:"venire",it:"è venuto/a",ex:"Sei venuto alla festa?"},
+    {de:"leben",inf:"vivere",it:"è vissuto/a, ha vissuto",ex:"Ha vissuto dieci anni a Milano."},
+    {de:"geboren werden",inf:"nascere",it:"è nato/a",ex:"Sono nata a Zurigo."},
+  ]},
 ];
 
 const V=[
@@ -1813,7 +1846,12 @@ function showC(){
   document.getElementById('cfr').textContent=w.de;
   document.getElementById('cbk').textContent=w.it;
   document.getElementById('cex').textContent=w.ex||'';
-  document.getElementById('ci').classList.remove('flip');
+  document.getElementById('cfl').textContent='Deutsch';
+  document.getElementById('cbl').textContent=w.inf?'Infinito':'Italiano';
+  document.getElementById('cexf').textContent='';
+  if(w.inf){document.getElementById('cbk').textContent=w.inf;document.getElementById('cex').textContent='';}
+  fstage=0;
+  document.getElementById('ci').classList.remove('flip','flip2');
   document.getElementById('cbtns').classList.remove('on');
   document.getElementById('fhint').style.opacity='1';
   flp=false;
@@ -1821,11 +1859,23 @@ function showC(){
   document.getElementById('fcf').style.width=p+'%';
   document.getElementById('fclbl').textContent=(di+1)+' / '+dk.length;
 }
-function flipC(){if(flp)return;flp=true;document.getElementById('ci').classList.add('flip');document.getElementById('cbtns').classList.add('on');document.getElementById('fhint').style.opacity='0';}
+let fstage=0;
+function flipC(){if(flp)return;
+  const w=dk[di];
+  if(w&&w.inf){
+    const ci=document.getElementById('ci');
+    if(fstage===0){fstage=1;ci.classList.add('flip');return;}
+    if(fstage===1){fstage=2;
+      document.getElementById('cfl').textContent='Passato prossimo';
+      document.getElementById('cfr').textContent=w.it;
+      document.getElementById('cexf').textContent=w.ex||'';
+      ci.classList.add('flip2');}
+  }
+  flp=true;if(!(w&&w.inf))document.getElementById('ci').classList.add('flip');document.getElementById('cbtns').classList.add('on');document.getElementById('fhint').style.opacity='0';}
 function mk(ok){
   if(ok)dok++;else{dno++;wrongCards.push(dk[di]);}di++;
   const ci=document.getElementById('ci');
-  ci.classList.remove('flip');
+  ci.classList.remove('flip','flip2');
   document.getElementById('cbtns').classList.remove('on');
   document.getElementById('fhint').style.opacity='1';
   flp=false;
